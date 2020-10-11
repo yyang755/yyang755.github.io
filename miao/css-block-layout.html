@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by yyang755 (http://jsbin.com/puqajoj/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+body {
+  margin: 0;
+  font-size: 18px;
+}
+.foo {
+  width: 600px;
+  margin: auto;
+}
+header {
+  background-color: black;
+  color: white;
+}
+p {
+  margin: 15px auto;
+  width: 600px;
+}
+#foo li{
+  margin: 0;
+  list-style-type: none;
+  width: 180px;
+  height: 40px;
+  border: 3px solid black;
+ background-color: rgb(255,192,203);
+ margin: 15px 0;
+      line-height: 34px;
+  text-align: center;
+}
+#foo li:hover{
+  background-color: rgb(255,0,0);
+}
+#foo li:nth-child(n+5){
+  margin-left: 210px;
+}
+#foo li:nth-child(n+9) {
+      margin-left: 420px;
+    }
+
+#foo li:nth-child(4n+5){
+  margin-top: -244px;
+}
+#bar {
+  width: 600px;
+    }
+
+    #bar span {
+      box-sizing:border-box;
+      display: inline-block;
+      width: 180px;
+      height: 40px;
+      line-height: 34px;
+      text-align: center;
+      margin-bottom: 15px;
+      background-color: pink;
+      border: 3px solid black;
+    }
+ #bar span:nth-child(3n + 2) {
+      margin-left: 30px;
+    }
+
+#bar span:nth-child(3n + 3) {
+      margin-left: 30px;
+    }
+
+    #bar span:hover {
+      background-color: red;
+    }
+
+    #aaa li::marker {
+      content: "";
+    }
+
+   #aaa {
+      padding: 0;
+    }
+ul li {
+  list-style-type: none;
+  border-bottom: 1px dotted black;
+}
+#aaa li:last-child {
+      border: transparent;
+    }
+footer {
+      background-color: violet;
+      text-align: center;
+      margin-bottom: 16px;
+      min-width: 600px;
+
+    }
+</style>
+</head>
+<body>
+<header>
+  <nav class="foo">
+    hello world 请调整浏览器窗口大小查看效果
+  </nav>
+</header>
+  <p>页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
+
+  <section id="foo">
+  <ul>
+    <li>宽180高40(包含边框)</li>
+    <li>水平间隙30px</li>
+    <li>垂直间隙15px</li>
+    <li>边框宽度3px</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+    <li>产品</li>
+  </ul>
+    
+</section>
+  <section id="bar"><span>宽180高40(包含边框)</span><span>产品</span><span>产品</span><span>水平间隙30px</span><span>产品</span><span>产品</span><span>垂直间隙15px</span><span>产品</span><span>产品</span><span>边框宽度3px</span><span>产品</span><span>产品</span>
+  </section>
+  <ul id="aaa">
+    <li>link</li>
+    <li>link</li>
+    <li>link</li>
+    <li>link</li>
+    <li>link</li>
+  </ul>
+  </body>
+  <footer>©版权所有<br>本页所有布局均使用块元素</footer>
+  </body>
+</html>
