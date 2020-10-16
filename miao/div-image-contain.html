@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    * {
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 1px red;
+    }
+
+    .aaa {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+
+    .aaa img {
+        /*   不能直接给定宽高会被拉伸，可以max，具体200px也行。一个到达100%之后另一个算出来。 */
+        max-width: 100%;
+        max-height: 100%;
+        /*  然后定位居中就行，几种方法 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        position: absolute;
+    }
+
+    /* object-fit */
+
+    section img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+    }
+
+    /* bgp center */
+
+    .bbb {
+        background-image: url(https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg);
+        width: 200px;
+        height: 200px;
+        background-size: contain;
+        /* center上下左右都中心了 */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .ccc {
+        width: 200px;
+        height: 200px;
+        /* 一行占据全部然后middle居中 */
+        line-height: 200px;
+        /* 不是很中fx0 */
+        font-size: 0;
+    }
+
+    .ccc img {
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: middle;
+
+    }
+</style>
+
+<body>
+    <div class="aaa">
+        <img
+            src="https://travel.12306.cn/imgs/resources/uploadfiles/images/6d77d0ea-53d0-4518-b7e9-e53795b4920c_product_W572_H370.jpg">
+    </div>
+    <section>
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg"
+            alt="">
+    </section>
+    <div class="bbb">
+        <img src="" alt="">
+    </div>
+    <div class="ccc">
+        <img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg"
+            alt="">
+    </div>
+</body>
+
+</html>

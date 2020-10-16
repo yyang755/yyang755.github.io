@@ -18,14 +18,14 @@
     }
 
     .aaa span {
-        width: 100px;
+        width: 50%;
+        height: 40%;
         position: absolute;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
         margin: auto;
-        height: 40px;
     }
 
     /* 注意em和span的空格，行内布局空格不能忽略 */
@@ -36,14 +36,30 @@
         vertical-align: middle;
     }
 
+    /* 让行内块水平居中 text-align: center  放在div里面不放span里面
+    text-align 并不控制块元素自己的对齐，只控制它的行内内容的对齐。 */
     .bbb {
-        xheight: 300px;
+        width: 100vw;
+        text-align: center;
     }
 
     .bbb span {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
+        margin: auto;
+    }
+
+    section {
+        width: 100vw;
+        height: 200px;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    section div {
+        margin: auto;
+        width: 50%;
     }
 </style>
 
@@ -55,5 +71,9 @@
     <div class="bbb">
         <em></em><span>Lorem ipsum, Explicabo placeat pariatur quod nam sint!</span>
     </div>
+    <section>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+    </section>
 
 </html>
