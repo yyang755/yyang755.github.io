@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+
+<!-- label大于小于号导致chrome打开识别有问题 -->
+
+<style>
+    * {
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 1px red;
+    }
+
+    section {
+        width: 300px;
+        height: 200px;
+        border: 2px solid;
+        position: relative;
+
+    }
+
+    section input {
+        display: none;
+    }
+
+    section ul {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    section ul li {
+        font-size: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        xz-index: 8;
+    }
+
+    section ul li img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    section ul li label {
+        font-size: initial;
+        display: inline-block;
+        width: 25px;
+        line-height: 50px;
+        text-align: center;
+    }
+
+    section ul li label:nth-last-child(2) {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 50px;
+        margin: auto;
+    }
+
+    section ul li label:nth-last-child(2):hover {
+        background-color: gold;
+        cursor: pointer;
+    }
+
+    section ul li label:nth-last-child(1) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        margin: auto;
+    }
+
+    section ul li label:nth-last-child(1):hover {
+        background-color: gold;
+    }
+
+    section ul li {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    input:nth-child(1):checked~ul li:nth-child(1),
+    input:nth-child(2):checked~ul li:nth-child(2),
+    input:nth-child(3):checked~ul li:nth-child(3),
+    input:nth-child(4):checked~ul li:nth-child(4),
+    input:nth-child(5):checked~ul li:nth-child(5) {
+        opacity: 1;
+        z-index: 8;
+    }
+
+    .aaa {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 120px;
+        height: 30px;
+        z-index: 100;
+        border-radius: 20px;
+        /* 行内块水平居中 */
+        text-align: center;
+    }
+
+    .aaa label {
+        width: 10px;
+        height: 10px;
+        margin-left: 2px;
+        margin-right: 2px;
+        background-color: red;
+        display: inline-block;
+        border-radius: 5px;
+
+    }
+
+    .aaa label:hover {
+        cursor: pointer;
+    }
+
+    input:nth-child(1):checked~.aaa label:nth-child(1),
+    input:nth-child(2):checked~.aaa label:nth-child(2),
+    input:nth-child(3):checked~.aaa label:nth-child(3),
+    input:nth-child(4):checked~.aaa label:nth-child(4),
+    input:nth-child(5):checked~.aaa label:nth-child(5) {
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <section>
+        <input type="radio" name="s1" id="s1-1">
+        <input type="radio" name="s1" id="s1-2">
+        <input type="radio" name="s1" id="s1-3">
+        <input type="radio" name="s1" id="s1-4">
+        <input type="radio" name="s1" id="s1-5">
+
+        <ul>
+            <li>
+                <a href="#"><img
+                        src="https://travel.12306.cn/imgs/resources/uploadfiles/images/8b36f9a7-f780-4e71-b719-9300109a9ff2_product_W572_H370.jpg"
+                        alt=""></a>
+                <label for="s1-5">
+                    << /label>
+                        <label for="s1-2">></label>
+            </li>
+            <li><a href="#"><img
+                        src="https://travel.12306.cn/imgs/resources/uploadfiles/images/c7c03732-3c86-4308-aea7-df747d4999e8_product_W572_H370.jpg"
+                        alt=""></a><label for="s1-1">
+                    << /label>
+                        <label for="s1-3">></label>
+            </li>
+            <li><a href="#"><img
+                        src="https://travel.12306.cn/imgs/resources/uploadfiles/images/b0c76b21-531b-4af4-a607-cf5672c72ded_product_W572_H370.jpg"
+                        alt=""></a>
+                <label for="s1-2">
+                    << /label>
+                        <label for="s1-4">></label>
+            </li>
+            <li>
+                <a href="#"><img
+                        src="https://travel.12306.cn/imgs/resources/uploadfiles/images/1716878f-79a2-4db1-af8c-b9c2039f0b3c_product_W572_H370.jpg"
+                        alt=""></a>
+                <label for="s1-3">
+                    << /label>
+                        <label for="s1-5">></label>
+            </li>
+            <li>
+                <a href="#"><img
+                        src="https://travel.12306.cn/imgs/resources/uploadfiles/images/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg"
+                        alt=""></a>
+                <label for="s1-4">
+                    << /label>
+                        <label for="s1-1">></label>
+            </li>
+        </ul>
+        <div class="aaa">
+            <label for="s1-1"></label>
+            <label for="s1-2"></label>
+            <label for="s1-3"></label>
+            <label for="s1-4"></label>
+            <label for="s1-5"></label>
+        </div>
+    </section>
+</body>
+
+</html>
