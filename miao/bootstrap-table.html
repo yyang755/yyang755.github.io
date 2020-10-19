@@ -1,1 +1,152 @@
-hello world
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    * {
+        xbackground-color: rgba(0, 0, 0, 0.1);
+        xbox-shadow: 0 0 1px red;
+    }
+
+    /* body自带8px margin */
+    body {
+        margin: 0;
+    }
+
+    .table {
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: .75rem;
+        vertical-align: top;
+    }
+
+    .table thead tr {
+        border-bottom: 2px solid #DEE2E6;
+    }
+
+    .table tbody tr {
+        border-top: 1px solid #DEE2E6;
+    }
+
+
+    .table-dark {
+        background-color: #343A40;
+        color: white;
+    }
+
+    .table-dark thead tr {
+        border-bottom: 2px solid #454D55;
+    }
+
+    .table-dark tbody tr {
+        border-top: 1px solid #454D55;
+    }
+
+
+    .table-hover tbody tr:hover {
+        background-color: #ECECEC;
+    }
+
+    .table-dark.table-hover tbody tr:hover {
+        background-color: #43494E;
+    }
+
+
+    .table-small th,
+    .table-small td {
+        padding: .3rem;
+    }
+
+
+    .table-striped.table-dark tbody tr:nth-child(odd) {
+        background-color: #3E444A;
+    }
+
+    .table-striped tbody tr:nth-child(odd) {
+        background-color: #F2F2F2;
+    }
+
+    .table-striped.table-hover tbody tr:nth-child(odd):hover {
+        background-color: #ECECEC;
+    }
+
+    .table-striped.table-dark.table-hover tbody tr:nth-child(odd):hover {
+        background-color: #43494E;
+    }
+
+    .table-bordered {
+        border: 1px solid #DEE2E6;
+    }
+
+    .table-bordered td,
+    .table-bordered th {
+        border: 1px solid #DEE2E6;
+    }
+
+    .table-bordered.table-dark td,
+    .table-bordered.table-dark th {
+        border: 1px solid #343A40;
+    }
+
+
+    .table-borderless th,
+    .table-borderless td {
+        xborder: hidden;
+        border: none;
+    }
+
+    /* body {
+  border: 1px solid #DEE2E6
+} */
+    .table-borderless thead tr,
+    .table-borderless tbody tr {
+        border: none;
+    }
+
+    /* 边框有表本身，表行tr，表单元格td组成 */
+</style>
+
+
+<body>
+    <table class="table table-dark table-hover xtable-small table-bordered table-striped table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
