@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    * {
+        xbackground-color: rgba(0, 0, 0, 0.1);
+        xbox-shadow: 0 0 1px red;
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        box-sizing: border-box;
+        width: 270px;
+        height: 150px;
+        display: inline-block;
+        border: 2px solid #CBC7CA;
+        border-radius: 99999px;
+        position: relative;
+        transition: .6s;
+    }
+
+    span {
+        width: 135px;
+        height: 135px;
+        display: inline-block;
+        xborder: 2px solid #C5C5C5;
+        border-radius: 99999px;
+        position: absolute;
+        xtop: 5px;
+        left: 5px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        box-shadow: 1px 5px 10px #C5C5C5;
+        transition: .6s;
+        background-color: white;
+
+    }
+
+    input:checked~label span {
+        position: absolute;
+        left: 122px;
+        /*  width:134px;
+  padding:0 0;
+  transition: left 1s,width .5s,padding .5s .3s;
+   */
+    }
+
+    input:checked~label {
+        border: 2px solid #2DED4A;
+        /* box-shadow不影响布局 */
+        box-shadow: 0px 0px 0px 76px #2DED4A inset;
+
+    }
+</style>
+
+<body>
+    <!--   checkbox而不是radio 
+id而不是name  -->
+    <input type="checkbox" id="a">
+    <label for="a">
+        <span></span>
+    </label>
+</body>
+
+</html>
