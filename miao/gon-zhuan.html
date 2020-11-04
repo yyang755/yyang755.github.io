@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    * {
+        xbackground-color: rgba(0, 0, 0, 0.1);
+        xbox-shadow: 0 0 1px red;
+    }
+
+    @keyframes ro {
+        to {
+            /* 不能有空格rotate() */
+            transform: rotate(360deg);
+        }
+    }
+
+    div {
+        width: 300px;
+        margin-top: 150px;
+        animation: ro 5s linear 999;
+    }
+
+    span {
+        /* 行内元素不能transform，因为它没有图层，流式元素 */
+        display: inline-block;
+        animation: ro 999 5s linear reverse;
+    }
+</style>
+
+<body>
+    <div><span>我</span></div>
+</body>
+
+</html>

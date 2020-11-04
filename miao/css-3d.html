@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        xbackground-color: rgba(0, 0, 0, 0.1);
+        xbox-shadow: 0 0 1px red;
+    }
+
+    section {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotatex(130deg) rotatey(360deg);
+        transition: 2s;
+        /* 是section变化不是div看清楚写在哪里 */
+        animation: cubic 3s linear 9999;
+
+    }
+
+    @keyframes cubic {
+        from {
+            transform: rotatex(0deg) rotatey(0deg);
+        }
+
+        to {
+            transform: rotatex(360deg) rotatey(720deg);
+        }
+
+    }
+
+    section div {
+        width: 100px;
+        height: 100px;
+        font-size: 60px;
+        text-align: center;
+        position: absolute;
+        xtop: 50%;
+        xleft: 50%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        xtransform: translate(-50%, -50%);
+        xtranslate: (-50%, -50%);
+
+    }
+
+    section:hover {
+        animation-play-state: paused;
+    }
+
+    .s1 {
+        transform: rotatey(0) translatez(50px);
+        background-color: magenta;
+    }
+
+    .s2 {
+        transform: rotatey(180deg) translatez(50px);
+        background-color: lime;
+    }
+
+    .s3 {
+        transform: rotatey(90deg) translatez(50px);
+        background-color: tan;
+    }
+
+    .s4 {
+        transform: rotatey(-90deg) translatez(50px);
+        background-color: red;
+
+    }
+
+    .s5 {
+        transform: rotatex(90deg) translatez(50px);
+        background-color: yellowgreen
+    }
+
+    .s6 {
+        transform: rotatex(-90deg) translatez(50px);
+        background-color: yellow
+    }
+</style>
+
+<body>
+    <section>
+        <div class="s1">1</div>
+        <div class="s2">2</div>
+        <div class="s3">3</div>
+        <div class="s4">4</div>
+        <div class="s5">5</div>
+        <div class="s6">6</div>
+    </section>
+</body>
+
+</html>

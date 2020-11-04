@@ -5,65 +5,191 @@
     <meta charset="UTF-8">
     <title>小米商城 - 小米10 Pro、Redmi K30 Pro、小米MIX Alpha，小米电视官方网站</title>
     <!-- 引入less -->
-    <link rel="stylesheet" type="text/less" href="style.less">
-    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" xtype="text/less" href="style.less">
 </head>
 <style type="text/less">
+    * {
+ xbackground-color: rgba(0,0,0,0.1) ;
+  box-shadow:0 0 1px red;
+}
+    body {
+    margin: 0;
+    overflow-y: scroll;
+    font-family: sans-serif;
+}
     .top-banner a {
     /* 图片可以点 */
     display: block;
     background-image: url(https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a2a9e6db5e3c5374301827435d8595c6.jpg?w=5120&h=240);
     background-position: center;
     /* bgp */
-    background-position: auto 120px;
+    background-size: auto 120px;
     background-repeat: no-repeat;
     height: 120px;
     margin: auto;
     min-width: 1226px;
-
 }
 .site-topbar {
     height: 40px;
     background-color: #333;
-    color: white;
     min-width: 1226px;
     /* 第一种 pad */
     xpadding: 0 calc(50% - 1226px / 2);
-    .top-banner-inner {
-        min-width: 1226px;
+}
+.site-topbar .site-topbar-inner {
+        width: 1226px;
         margin: auto;
     }
+.site-topbar .site-topbar-inner a {
+    line-height: 40px;
+    display: inline-block;
+    font-size: 12px;
+    color: #b0b0b0;
+}
+.site-topbar .site-topbar-inner a:hover {
+    color: #ffffff;
+}
+a {
+    text-decoration: none;
+}
+.site-topbar .site-topbar-inner span {
+    color: #424242;
+    font-size: 12px;
+    margin: 0 .3em;
+    line-height: 40px;
+}
+.site-topbar-right {
+    float: right;
+}
+.shopping-cart {
+    display: inline-block;
+    margin-left: 25px;
+    background-color: #424242;
+    width: 90px;
+    position: relative;
+    
+}
+/* 优先级要高 less的好处*/
+div.shopping-cart:hover a.shopping-cart-link {
+    color: #FF6700;
+    xbackground-color: white;
+}
+.shopping-cart-link {
+    width: 90px;
+    padding: 0 15px;
+    /* 阴影在下 */
+    position: relative;
+    z-index: 8;
+}
+.shopping-cart:hover .shopping-cart-detail {
+    max-height: 300px;
+}
+.shopping-cart-detail {
+    xheight: 0px;
+    overflow: hidden;
+    transition: .5s;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    height: 200px;
+    max-height: 0;
+    width: 316px;
+    xborder: 1px solid;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    text-align: center;
+}
+.site-topnav {
+    width: 1226px;
+    margin: auto;
+    overflow: hidden;
+}
+.site-topnav .logo {
+    display: inline-block;
+    /* 浮动去除3pxbug */
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin: 25px 0;
+    background-color: #ff6700;
+    background-repeat: no-repeat;
+    background-image: url(https://s02.mifile.cn/assets/static/image/mi-logo.png),url(https://s02.mifile.cn/assets/static/image/mi-home.png);
+    background-position: 0 0,-50px 0;
+    transition: .3s;
+}
+.site-topnav .logo:hover {
+    /* 观察动画走向 */
+    background-position: 50px 0,0 0;
+}
+.site-topnav-list {
+    overflow: hidden;
+}
+.site-topnav-list li {
+list-style-type: none;
+float: left;
+}
+.site-topnav-list li a {
+padding: 0 10px;
+height: 100px;
+line-height: 100px;
+display: inline-block;
+}
+.site-topnav .site-topnav-search {
+    display: inline-flex;
 }
 </style>
 
 <body>
     <div class="top-banner">
-        <a href="https://www.baidu.com">
-            <!-- 图片最好放html里好维护 -->
-            <img src="" alt="">
+        <a href="https://www.baidu.com"></a>
+        <!-- 内容最好放html里好维护 -->
+        <!-- <img src="" alt=""> -->
         </a>
     </div>
     <div class="site-topbar">
-        <div class="top-banner-inner">
+        <div class="site-topbar-inner">
             <a href="#">小米商城</a> <span>|</span>
             <a href="#">MIUI</a> <span>|</span>
             <a href="#">loT</a> <span>|</span>
             <a href="#">云服务</a> <span>|</span>
-            <a href="#">金融</a> <span>|</span>
+            <a href="#">天心科技</a> <span>|</span>
             <a href="#">有品</a> <span>|</span>
-            <a href="#">小爱开放平台 </a><span>|</span>
+            <a href="#">小爱开放平台 </a> <span>|</span>
             <a href="#">企业团购</a> <span>|</span>
             <a href="#">资质证照</a> <span>|</span>
             <a href="#">协议规则</a> <span>|</span>
-            <a href="#">下载app
-                <div class="code"><img src="http://i1.mifile.cn/f/i/17/appdownload/download.png?1" width="90"
-                        height="90" alt="xiaomisc"></div></a> <span>|</span>
+            <a href="#">下载app</a> <span>|</span>
             <a href="#">智能生活</a> <span>|</span>
             <a href="#">Select Location</a>
-            <a href="#">登录</a> <span>|</span>
-            <a href="#">注册</a> <span>|</span>
-            <a href="#">消息通知</a>
+            <div class="site-topbar-right">
+                <a href="#">登录</a> <span>|</span>
+                <a href="#">注册</a> <span>|</span>
+                <a href="#">消息通知</a>
+                <div class="shopping-cart">
+                    <a href="#" class="shopping-cart-link">购物车</a>
+                    <div class="shopping-cart-detail">
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="site-topnav">
+        <a href="#" class="logo" tittle="小米官网"></a>
+        <ul class="site-topnav-list">
+            <li><a href="#">小米手机</li></a>
+            <li><a href="#">Redmi 红米</li></a>
+            <li><a href="#">电视</li></a>
+            <li><a href="#">笔记本</li></a>
+            <li><a href="#">家电</li></a>
+            <li><a href="#">路由器</li></a>
+            <li><a href="#">智能硬件</li></a>
+            <li><a href="#">服务</li></a>
+            <li><a href="#">社区</li></a>
+        </ul>
+        <form class="site-topnav-search" action="#">
+            <input type="text" name="keyword">
+            <button>search</button>
+        </form>
     </div>
 </body>
 <script src="less.js"></script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+  <style>
+  * {
+ background-color: rgba(0,0,0,0.1) ;
+  box-shadow:0 0 1px red;
+}
+@keyframes marquee {
+  from {
+    xtext-indent: 100%;
+    margin-left: 100%;
+    xtransform: translate(0);
+  }
+  to {
+    xtext-indent: -31px;
+    margin-left: 0%;
+    transform: translate(-100%);
+  }
+}
+div {
+  overflow: hidden;
+}
+span {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 10s linear 999;
+}
+
+</style>
+<body>
+  <div><span>Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit amet, consectetucing </span></div>
+<marquee>bbb</marquee>
+</body>
+</html>
