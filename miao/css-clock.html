@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    * {
+        xbackground-color: rgba(0, 0, 0, 0.1);
+        xbox-shadow: 0 0 1px red;
+    }
+
+    div {
+        position: relative;
+        width: 200px;
+        height: 200px;
+    }
+
+    div span {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+        line-height: 20px;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    span:nth-child(2) {
+        transform: rotate(-60deg) translate(80px) rotate(60deg)
+    }
+
+    span:nth-child(3) {
+        transform: rotate(-30deg) translate(80px) rotate(30deg)
+    }
+
+    span:nth-child(4) {
+        transform: rotate(0deg) translate(80px) rotate(0deg)
+    }
+
+    span:nth-child(5) {
+        transform: rotate(30deg) translate(80px) rotate(-30deg)
+    }
+
+    span:nth-child(6) {
+        transform: rotate(60deg) translate(80px) rotate(-60deg)
+    }
+
+    span:nth-child(7) {
+        transform: rotate(90deg) translate(80px) rotate(-90deg)
+    }
+
+    span:nth-child(8) {
+        transform: rotate(120deg) translate(80px) rotate(-120deg)
+    }
+
+    span:nth-child(9) {
+        transform: rotate(150deg) translate(80px) rotate(-150deg)
+    }
+
+    span:nth-child(10) {
+        transform: rotate(180deg) translate(80px) rotate(-180deg)
+    }
+
+    span:nth-child(11) {
+        transform: rotate(210deg) translate(80px) rotate(-210deg)
+    }
+
+    span:nth-child(12) {
+        transform: rotate(240deg) translate(80px) rotate(-240deg)
+    }
+
+    span:nth-child(13) {
+        transform: rotate(270deg) translate(80px) rotate(-270deg)
+    }
+
+    @keyframes sec {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .secc {
+        position: relative;
+        background-color: lime;
+        top: 100px;
+        left: 100px;
+        width: 65px;
+        height: 2px;
+        transform-origin: left center;
+        xtransition: 1s linear 9999;
+        animation: sec 60s steps(60) 99999;
+        transform: xtranslatex(100px) xtranslatey(100px)
+    }
+
+    /* div:hover .secc{
+   
+  transform: rotate(6deg)
+} */
+</style>
+
+<body>
+
+    <div>
+        <div class="secc"></div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>10</span>
+        <span>11</span>
+        <span>12</span>
+    </div>
+</body>
+
+</html>
