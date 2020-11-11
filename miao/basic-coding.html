@@ -413,65 +413,68 @@ X
   console.log(average);
 </script>
 <script type="" id="ch0105/02">
-    var counter = 0;
-    var sum = 0;
-    while (counter <= 11) {
-      var money = Number(prompt());
-      sum += money;
-      counter += 1;
-      average = (sum / 12);
-      average.toFixed(2);
+  var counter = 0;
+  var sum = 0;
+  while (counter <= 11) {
+    var money = Number(prompt());
+    sum += money;
+    counter += 1;
+    average = sum / 12;
+    average.toFixed(2);
+  }
+  console.log("$" + average);
+</script>
+<script type="" id="ch0105/03">
+  var n = Number(prompt());
+  var counter = 1;
+  var sum = 0;
+  while (counter <= n) {
+    var x = Number(prompt());
+    sum += x;
+    counter += 1;
+    average = sum / n;
+  }
+  console.log(average.toFixed(4));
+</script>
+<script type="" id="ch0105/04">
+  var n = Number(prompt());
+  var counter = 1;
+  var sum = 0;
+  while (counter <= n) {
+    var x = Number(prompt());
+    sum += x;
+    counter += 1;
+    average = (sum / n).toFixed(5);
+  }
+  console.log(sum, average);
+</script>
+<script type="" id="ch0105/05">
+  var n = Number(prompt());
+  var counter = 1;
+  while (counter <= n) {
+    var x = Number(prompt());
+    var max = x;
+    if (x >= max) {
+      max = x;
     }
-    console.log("$" + average);
-  </script>
-  <script type="" id="ch0105/03">
-    var n = Number(prompt());
-    var counter = 1;
-    var sum = 0;
-    while (counter <= n) {
-      var x = Number(prompt());
-      sum += x;
-      counter += 1;
-      average = (sum / n);
+    counter += 1;
+  }
+  console.log(max);
+</script>
+<script type="" id="ch0105/06">
+  var n = Number(prompt());
+  var counter = 1;
+  while (counter <= n) {
+    var x = Number(prompt());
+    var max = x;
+    var min = x;
+    if (x >= max) {
+      max = x;
+    } else if (x <= min) {
+      min = x;
     }
-    console.log(average.toFixed(4));
-  </script>
-  <script type="" id="ch0105/04">
-    var n = Number(prompt());
-    var counter = 0;
-    var sum = 0;
-    while (counter <= n) {
-      var old = Number(prompt());
-      //不能有空格
-      old += old;
-      counter += 1;
-      average = (sum / n)toFixed(2);
-    }
-    console.log(average);
-  </script>
-  <script type="" id="ch0105/01">
-    var n = Number(prompt());
-    var counter = 0;
-    var sum = 0;
-    while (counter <= n) {
-      var old = Number(prompt());
-      //不能有空格
-      old += old;
-      counter += 1;
-      average = (sum / n)toFixed(2);
-    }
-    console.log(average);
-  </script>
-  <script type="" id="ch0105/01">
-    var n = Number(prompt());
-    var counter = 0;
-    var sum = 0;
-    while (counter <= n) {
-      var old = Number(prompt());
-      //不能有空格
-      old += old;
-      counter += 1;
-      average = (sum / n)toFixed(2);
-    }
-    console.log(average);
-  </script>
+    counter += 1;
+  }
+  y = max - min;
+  console.log(y);
+</script>
