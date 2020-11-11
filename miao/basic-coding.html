@@ -362,28 +362,34 @@ X
   }
 </script>
 <script type="" id="ch0104/20">
+  //Math.sqrt()格式
   var a = Number(prompt());
   var b = Number(prompt());
   var c = Number(prompt());
   var delta = b * b - 4 * a * c;
-  //Math.sqrt()格式
-  var x1 = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
-  var x2 = (-b - Math.sqrt(b * b - 4 * a * c)) / (2 * a);
-  if (delta > 0 && x1 > x2) {
+  //括号嵌套太多容易掉括号,括号掉一半后面代码可能都不生效
+  var x1 = ((-b + Math.sqrt(delta)) / (2 * a)).toFixed(5);
+  var x2 = ((-b - Math.sqrt(delta)) / (2 * a)).toFixed(5);
+  if (delta > 0) {
     console.log(x1, x2);
-  } else {
-    console.log(0);
+  } else if (delta == 0) {
+    console.log(x1, x2);
+  } else if (delta < 0) {
+    var real = -b / (2 * a);
+    var imagine = Math.sqrt(4 * a * c - b * b) / (2 * a);
+    var x3 = real + imagine * i;
+    var x4 = real - imagine * i;
+    console.log(x3, x4);
   }
 </script>
 <script type="" id="ch0104/21">
   var n = Number(prompt());
   var x = Number(prompt());
   var y = Number(prompt());
-  var eat = x * y;
-  var remaind = n - x * y;
-  if (n) {
-    console.log(x1, x2);
-  } else {
+  var z = parseInt(n - x * y);
+  if (z > 0) {
+    console.log(z);
+  } else if (z <= 0) {
     console.log(0);
   }
 </script>
