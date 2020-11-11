@@ -405,7 +405,7 @@ X
   while (counter <= n) {
     var old = Number(prompt());
     //不能有空格
-    old += old;
+    sum += old;
     counter += 1;
     average = sum / n;
     average.toFixed(2);
@@ -451,9 +451,9 @@ X
 <script type="" id="ch0105/05">
   var n = Number(prompt());
   var counter = 1;
+  max = 0;
   while (counter <= n) {
     var x = Number(prompt());
-    var max = x;
     if (x >= max) {
       max = x;
     }
@@ -464,13 +464,14 @@ X
 <script type="" id="ch0105/06">
   var n = Number(prompt());
   var counter = 1;
+  var max = 0;
+  var min = 1000;
   while (counter <= n) {
     var x = Number(prompt());
-    var max = x;
-    var min = x;
-    if (x >= max) {
+    if (x > max) {
       max = x;
-    } else if (x <= min) {
+    }
+    if (x < min) {
       min = x;
     }
     counter += 1;
