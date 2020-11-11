@@ -5,41 +5,41 @@ Math.floor
   var a = Number(prompt());
   var b = Number(prompt());
   var c = a + b;
-  console.log(c)
+  console.log(c);
 </script>
 <script type="" id="ch0103/02">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = Number(prompt());
   var d = (a + b) * c;
-  console.log(d)
+  console.log(d);
 </script>
 <script type="" id="ch0103/03">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = Number(prompt());
   var d = (a + b) / c;
-  console.log(d)
+  console.log(d);
 </script>
 <script type="" id="ch0103/04">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = parseInt(a / b);
-  var d = a % b
-  console.log(c, d)
+  var d = a % b;
+  console.log(c, d);
 </script>
 <script type="" id="ch0103/05">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = a / b;
-  console.log(c.toFixed(9))
+  console.log(c.toFixed(9));
 </script>
 <script type="" id="ch0103/06">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = (b / a) * 100;
   var d = c.toFixed(3);
-  console.log(d + '%')
+  console.log(d + "%");
 </script>
 <script type="" id="ch0103/07">
   var x = Number(prompt());
@@ -47,32 +47,32 @@ Math.floor
   var b = Number(prompt());
   var c = Number(prompt());
   var d = Number(prompt());
-  var e = a * x * x * x + b * x* x+ c*x + d;
-  console.log(e.toFixed(7))
+  var e = a * x * x * x + b * x * x + c * x + d;
+  console.log(e.toFixed(7));
 </script>
 <script type="" id="ch0103/08">
   var a = Number(prompt());
-  var b = 5 * (a - 32) / 9;
-  console.log(b.toFixed(5))
+  var b = (5 * (a - 32)) / 9;
+  console.log(b.toFixed(5));
 </script>
 <script type="" id="ch0103/09">
   var a = Number(prompt());
   var b = 2 * a;
-  var c = 2 * pi *a;
+  var c = 2 * pi * a;
   var d = pi * a * a;
-  console.log(b,c.toFixed(4),d.toFixed(4))
+  console.log(b, c.toFixed(4), d.toFixed(4));
 </script>
 <script type="" id="ch0103/10">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = 1 / (1 / a + 1 / b);
-  console.log(c.toFixed(2))
+  console.log(c.toFixed(2));
 </script>
 <script type="" id="ch0103/11">
   var a = Number(prompt());
   var b = Number(prompt());
   var c = a % b;
-  console.log(c.toFixed(4))
+  console.log(c.toFixed(4));
 </script>
 <script type=" " id="ch0103/12">
   var a = Number(prompt());
@@ -83,22 +83,22 @@ Math.floor
   var a = Number(prompt());
   // parseInt取整，toFixed()不准
   var b = parseInt(a / 100);
-  var c = parseInt(a % 100 / 10);
+  var c = parseInt((a % 100) / 10);
   var d = a % 10;
-  console.log(d * 100 + c * 10 + b)
+  console.log(d * 100 + c * 10 + b);
 </script>
 <script type="" id="ch0103/14">
   var h = Number(prompt());
   var r = Number(prompt());
   var c = 20 / (pi * r * r * h);
-  console.log(c)
+  console.log(c);
 </script>
 <script type="" id="ch0103/15">
   var n = Number(prompt());
   var x = Number(prompt());
   var y = Number(prompt());
   var c = parseInt(n - y / x);
-  console.log(c)
+  console.log(c);
 </script>
 <script type="" id="ch0103/16">
   var xa = Number(prompt());
@@ -142,22 +142,18 @@ Math.floor
 <script type="" id="ch0104/01">
   var N = Number(prompt());
   if (N > 0) {
-  console.log('positive');
-  }
-  else if (N = 0) {
-      console.log('zero')
-  }
-  else
-  console.log('negative')
+    console.log("positive");
+  } else if ((N = 0)) {
+    console.log("zero");
+  } else console.log("negative");
 </script>
 <script type="" id="ch0104/02">
   var N = Number(prompt());
   if (N >= 0) {
-  console.log(N);
-  }
-  else if (N < 0) {
-      n = -N
-      console.log(n)
+    console.log(N);
+  } else if (N < 0) {
+    n = -N;
+    console.log(n);
   }
 </script>
 <script type="" id="ch0104/03">
@@ -208,7 +204,7 @@ X
   }
 </script>
 <script type="x" id="ch0104/08">
-  var N = Number(prompt());
+  var N = Number((prompt());
   if (N % 3 == 0 && N % 5 == 0) {
   console.log('YES');
   }
@@ -266,15 +262,15 @@ X
 </script>
 <script type="" id="ch0104/13">
   var x = Number(prompt());
-  if (0 <= x && x < 5) {
+  if (x < 5) {
     var y = -x + 2.5;
     console.log(y);
   }
-  if (x >= 5 && x < 10) {
+  //掉了else,不写的话条件更宽松了不对
+  else if (x < 10) {
     var y = 2 - 1.5 * (x - 3) ** 2;
     console.log(y.toFixed(3));
-  }
-  if (x >= 10 && x < 20) {
+  } else if (x >= 10) {
     var y = x / 2 - 1.5;
     console.log(y);
   }
@@ -282,11 +278,11 @@ X
 <script type="" id="ch0104/14">
   var weight = Number(prompt());
   var date = prompt();
+  //情况分的少比较好
   if (weight <= 1000 && date == 'y') {
       //if (date == y) {
           money = 13;
           console.log(money)
-
       }
       else if (weight <= 1000 && date == 'n') {
           money = 8;
@@ -294,11 +290,11 @@ X
       }
   else  if (x > 1000 && date == y) {
       //if (date == y) {
-          money = (x - 1000) / 500 * 4 + 5;
+          money = Math.ceil((x - 1000) / 500) * 4 + 5;
           console.log(money)
       }
-      else if (date == n) {
-          money = (x - 1000) / 500 * 4;
+      else if (x > 1000 && date == n) {
+          money = Math.ceil((x - 1000) / 500) * 4;
           console.log(money)
       }
   }
@@ -307,13 +303,20 @@ X
   var x = Number(prompt());
   var y = Number(prompt());
   var z = Number(prompt());
-  if (x > y && x > z) {
+  //等号情况考虑
+  if (x >= y && x >= z) {
     console.log(x);
-  } else if (y > x && y > z) {
+  } else if (y >= x && y >= z) {
     console.log(y);
-  } else if (z > x && z > y) {
+  } else if (z >= x && z >= y) {
     console.log(z);
   }
+  //   报数
+  //   var max = a
+  //   if (b > a) {
+  //      max = b
+  //   }
+  //   ...
 </script>
 <script type="" id="ch0104/16">
   var x = Number(prompt());
@@ -327,7 +330,8 @@ X
 </script>
 <script type="" id="ch0104/17">
   var a = Number(prompt());
-  if (a % 4 == 0 && year % 100 != 0) {
+  //400
+  if ((a % 4 == 0 && a % 100 != 0) || a % 400 == 0) {
     console.log("Y");
   } else {
     console.log("N");
@@ -357,7 +361,7 @@ X
     console.log(x / y);
   } else if (z == "/" && y == 0) {
     console.log("Divided by zero!");
-  } else if (z != "+" && z != "-" && z != "*" && z != "/") {
+  } else {
     console.log("Invalid operator!");
   }
 </script>
@@ -368,18 +372,19 @@ X
   var c = Number(prompt());
   var delta = b * b - 4 * a * c;
   //括号嵌套太多容易掉括号,括号掉一半后面代码可能都不生效
+  //多次算的可以设置变量节约性能
   var x1 = ((-b + Math.sqrt(delta)) / (2 * a)).toFixed(5);
   var x2 = ((-b - Math.sqrt(delta)) / (2 * a)).toFixed(5);
   if (delta > 0) {
     console.log(x1, x2);
   } else if (delta == 0) {
-    console.log(x1, x2);
+    console.log("x1+ x2",x1);
   } else if (delta < 0) {
     var real = -b / (2 * a);
     var imagine = Math.sqrt(4 * a * c - b * b) / (2 * a);
-    var x3 = real + imagine * i;
-    var x4 = real - imagine * i;
-    console.log(x3, x4);
+    //var x3 = real + imagine * i;
+    //var x4 = real - imagine * i;
+    console.log(real + (imagine + "i"), var x4 = real - (imagine + "i"));
   }
 </script>
 <script type="" id="ch0104/21">
@@ -393,3 +398,80 @@ X
     console.log(0);
   }
 </script>
+<script type="" id="ch0105/01">
+  var n = Number(prompt());
+  var counter = 1;
+  var sum = 0;
+  while (counter <= n) {
+    var old = Number(prompt());
+    //不能有空格
+    old += old;
+    counter += 1;
+    average = sum / n;
+    average.toFixed(2);
+  }
+  console.log(average);
+</script>
+<script type="" id="ch0105/02">
+    var counter = 0;
+    var sum = 0;
+    while (counter <= 11) {
+      var money = Number(prompt());
+      sum += money;
+      counter += 1;
+      average = (sum / 12);
+      average.toFixed(2);
+    }
+    console.log("$" + average);
+  </script>
+  <script type="" id="ch0105/03">
+    var n = Number(prompt());
+    var counter = 1;
+    var sum = 0;
+    while (counter <= n) {
+      var x = Number(prompt());
+      sum += x;
+      counter += 1;
+      average = (sum / n);
+    }
+    console.log(average.toFixed(4));
+  </script>
+  <script type="" id="ch0105/04">
+    var n = Number(prompt());
+    var counter = 0;
+    var sum = 0;
+    while (counter <= n) {
+      var old = Number(prompt());
+      //不能有空格
+      old += old;
+      counter += 1;
+      average = (sum / n)toFixed(2);
+    }
+    console.log(average);
+  </script>
+  <script type="" id="ch0105/01">
+    var n = Number(prompt());
+    var counter = 0;
+    var sum = 0;
+    while (counter <= n) {
+      var old = Number(prompt());
+      //不能有空格
+      old += old;
+      counter += 1;
+      average = (sum / n)toFixed(2);
+    }
+    console.log(average);
+  </script>
+  <script type="" id="ch0105/01">
+    var n = Number(prompt());
+    var counter = 0;
+    var sum = 0;
+    while (counter <= n) {
+      var old = Number(prompt());
+      //不能有空格
+      old += old;
+      counter += 1;
+      average = (sum / n)toFixed(2);
+    }
+    console.log(average);
+  </script>
