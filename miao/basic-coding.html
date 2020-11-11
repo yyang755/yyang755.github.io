@@ -478,3 +478,71 @@ X
   y = max - min;
   console.log(y);
 </script>
+<script type="" id="ch0105/07">
+  var n = Number(prompt());
+  var counter = 1;
+  //变量使用前要先声明
+  var sgold = 0;
+  var ssilver = 0;
+  var sbronze = 0;
+  while (counter <= n) {
+    var gold = Number(prompt());
+    var silver = Number(prompt());
+    var bronze = Number(prompt());
+    //前后不能一样
+    sgold += gold;
+    ssilver += silver;
+    sbronze += bronze;
+    sum = sgold + ssilver + sbronze;
+    counter += 1;
+  }
+  console.log(sgold, ssilver, sbronze, sum);
+</script>
+<script type="" id="ch0105/08">
+  var n = Number(prompt());
+  var counter = 1;
+  var sum = 0;
+  var angle = 0;
+  while (counter <= n - 1) {
+    var x = Number(prompt());
+    sum += x;
+    angle = (n - 2) * 180 - sum;
+    counter += 1;
+  }
+  console.log(angle);
+</script>
+<script type="" id="ch0105/09">
+  var sm = 0;
+  var sn = 0;
+  var counter = 1;
+  var m = Number(prompt());
+  var n = Number(prompt());
+  if (m % 2 == 0) {
+    m += 1;
+  }
+  while (counter <= n) {
+    if (m % 2 != 0) {
+    }
+    counter += 1;
+  }
+  y = max - min;
+  console.log(y);
+</script>
+<script type="" id="ch0105/06">
+  var n = Number(prompt());
+  var counter = 1;
+  var max = 0;
+  var min = 1000;
+  while (counter <= n) {
+    var x = Number(prompt());
+    if (x > max) {
+      max = x;
+    }
+    if (x < min) {
+      min = x;
+    }
+    counter += 1;
+  }
+  y = max - min;
+  console.log(y);
+</script>
