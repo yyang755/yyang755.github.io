@@ -567,6 +567,7 @@ X
   var m = Number(prompt());
   var counter = 0;
   var number_counter = 0;
+  //for
   while (counter < N) {
     var number = Number(prompt());
     if (number == m) {
@@ -581,7 +582,10 @@ X
   var e = 1;
   var a = Number(prompt());
   var n = Number(prompt());
+  //   for (let i = 0; i < N; i++) {
+  //   }
   while (counter < n) {
+    //e *= a
     e = e * a;
     counter += 1;
   }
@@ -622,17 +626,191 @@ X
   var N = Number(prompt());
   var K = Number(prompt());
   var money = 200;
-  var salary_sum = 0;
-  var M = 0;
-  while (salary_sum < money) {
-    rate = rate * (1 + K / 100);
-    money = 200 * rate;
-    M += 1;
-    salary_sum = M * N;
+  var salarysum = 0;
+  var flag = false;
+  for (i = 0; i < 20; i++) {
+    //rate = rate * (1 + K / 100);
+    money *= 1 + K / 100;
+    salarysum *= N;
   }
-  if (M <= 20) {
-    console.log(M);
-  } else {
+  if (salarysum > money) {
+    buyed = true;
+    console.log(i);
+    break;
+  }
+  if (!buyed) {
     console.log("impossible");
   }
 </script>
+<script type="" id="ch0105/15">
+  var counter = 0;
+  var rate = 1;
+  var money = 0;
+  var R = Number(prompt());
+  var M = Number(prompt());
+  var Y = Number(prompt());
+  while (counter < Y) {
+    rate = rate * (1 + 0.05);
+    counter += 1;
+  }
+  //parseInt
+  money = Math.floor(M * rate);
+  console.log(money);
+</script>
+<script type="" id="ch0105/16">
+  var rate = 1;
+  var money = 0;
+  var N = Number(prompt());
+  var K = Number(prompt());
+  var money = 200;
+  var salarysum = 0;
+  var flag = false;
+  for (i = 0; i < 20; i++) {
+    //rate = rate * (1 + K / 100);
+    money *= 1 + K / 100;
+    salarysum *= N;
+  }
+  if (salarysum > money) {
+    buyed = true;
+    console.log(i);
+    break;
+  }
+  if (!buyed) {
+    console.log("impossible");
+  }
+</script>
+<script type="" id="ch0105/16">
+  var rate = 1;
+  var money = 0;
+  var N = Number(prompt());
+  var K = Number(prompt());
+  var money = 200;
+  var salarysum = 0;
+  var flag = false;
+  for (i = 0; i < 20; i++) {
+    //rate = rate * (1 + K / 100);
+    money *= 1 + K / 100;
+    salarysum *= N;
+  }
+  if (salarysum > money) {
+    buyed = true;
+    console.log(i);
+    break;
+  }
+  if (!buyed) {
+    console.log("impossible");
+  }
+</script>
+<script type="" id="ch0105/15">
+  var counter = 0;
+  var rate = 1;
+  var money = 0;
+  var R = Number(prompt());
+  var M = Number(prompt());
+  var Y = Number(prompt());
+  while (counter < Y) {
+    rate = rate * (1 + 0.05);
+    counter += 1;
+  }
+  //parseInt
+  money = Math.floor(M * rate);
+  console.log(money);
+</script>
+<script type="" id="ch0105/16">
+  var N = Number(prompt());
+  var K = Number(prompt());
+  var money = 200;
+  var salarysum = 0;
+  var flag = false;
+  // 没有第0年所以从1开始
+  for (i = 1; i <= 20; i++) {
+    //rate = rate * (1 + K / 100);
+    money *= 1 + K / 100; //指数增长
+    salarysum += N; //线性增长
+    if (salarysum >= money) {
+      flag = true;
+      console.log(i);
+      //买了之后不需要运行了
+      break;
+    }
+  }
+  //进到if里面才知道买房了
+  if (!flag) {
+    console.log("impossible");
+  }
+</script>
+<script type="" id="ch0105/17">
+  var a = 0;
+  var b = 1;
+  var k = Number(prompt());
+  for (let i = 1; i < k; i++) {
+    var c = a + b;
+    //console.log(c)
+    a = b;
+    b = c;
+  }
+  console.log(c);
+</script>
+<script type="" id="ch0105/18">
+  var n = Number(prompt());
+  var a = Number(prompt());
+  var b = Number(prompt());
+  var normal = b / a;
+  for (let i = 0; i < n; i++) {
+    var x = Number(prompt());
+    var y = Number(prompt());
+    var second = y / x;
+    var compare = second - normal;
+    if (compare > 0.05) {
+      console.log("better");
+    } else if (compare < -0.05) {
+      console.log("worse");
+    } else {
+      console.log("same");
+    }
+  }
+</script>
+<script type="" id="ch0105/19">
+  var n = Number(prompt());
+  var time_sum = 0;
+  for (let i = 0; i < n; i++) {
+    var x = Number(prompt());
+    var y = Number(prompt());
+    var z = Number(prompt());
+    var delta = Math.sqrt(x * x + y * y);
+    var time = (2 * delta) / 50 + 1.5 * z;
+    //  +=前不能定义变量
+    time_sum += Math.ceil(time);
+  }
+  console.log(time_sum);
+</script>
+<script type="" id="ch0105/20">
+  var h = Number(prompt());
+  var s = h;
+  for (let i = 0; i < 10; i++) {
+    h = h / 2;
+    s += 2 * h;
+  }
+  console.log(s);
+  console.log(h);
+</script>
+
+<script type="" id="ch0105/21">
+  var N = Number(prompt());
+  var a = 0;
+  while (N != 1) {
+    if (N % 2 == 1) {
+      a = 3 * N + 1;
+      console.log(N, "*3+1=", a);
+      N = a;
+    } else {
+      a = N / 2;
+      console.log(N, "/2=", a);
+      N = a;
+    }
+  }
+  console.log("End");
+</script>
+<script type="" id="ch0105/17"></script>
+<script type="" id="ch0105/17"></script>
+<script type="" id="ch0105/17"></script>
