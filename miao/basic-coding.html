@@ -530,7 +530,7 @@ X
   }
   console.log(sm);
 </script>
-<script type="" id="ch0105/010">
+<script type="" id="ch0105/10">
   var sm = 0;
   var m = Number(prompt());
   var n = Number(prompt());
@@ -588,20 +588,51 @@ X
   console.log(e);
 </script>
 <script type="" id="ch0105/14">
-  var sm = 0;
-  var sn = 0;
-  var counter = 1;
-  var m = Number(prompt());
+  var counter = 0;
+  var rate = 1;
+  var population = 0;
+  var x = Number(prompt());
   var n = Number(prompt());
-  if (m % 2 == 0) {
-    m += 1;
+  while (counter < n) {
+    rate = rate * 1.001;
+    counter += 1;
   }
-  while (m <= n) {
-    if (m % 2 != 0) {
-      sm += m;
-      m = m + 2;
-      counter += 1;
-    }
+  population = x * rate;
+  //直接在输出里面取位数，否则可能不生效
+  console.log(population.toFixed(4));
+</script>
+<script type="" id="ch0105/15">
+  var counter = 0;
+  var rate = 1;
+  var money = 0;
+  var R = Number(prompt());
+  var M = Number(prompt());
+  var Y = Number(prompt());
+  while (counter < Y) {
+    rate = rate * (1 + 0.05);
+    counter += 1;
   }
-  console.log(sm);
+  //parseInt
+  money = Math.floor(M * rate);
+  console.log(money);
+</script>
+<script type="" id="ch0105/16">
+  var rate = 1;
+  var money = 0;
+  var N = Number(prompt());
+  var K = Number(prompt());
+  var money = 200;
+  var salary_sum = 0;
+  var M = 0;
+  while (salary_sum < money) {
+    rate = rate * (1 + K / 100);
+    money = 200 * rate;
+    M += 1;
+    salary_sum = M * N;
+  }
+  if (M <= 20) {
+    console.log(M);
+  } else {
+    console.log("impossible");
+  }
 </script>
