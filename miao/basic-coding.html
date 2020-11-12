@@ -520,13 +520,14 @@ X
   if (m % 2 == 0) {
     m += 1;
   }
-  while (counter <= n) {
+  while (m <= n) {
     if (m % 2 != 0) {
+      sm += m;
+      m = m + 2;
+      counter += 1;
     }
-    counter += 1;
   }
-  y = max - min;
-  console.log(y);
+  console.log(sm);
 </script>
 <script type="" id="ch0105/06">
   var n = Number(prompt());
