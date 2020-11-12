@@ -528,7 +528,6 @@ X
 </script>
 <script type="" id="ch0105/010">
   var sm = 0;
-  var counter = 1;
   var m = Number(prompt());
   var n = Number(prompt());
   while (m % 17 != 0) {
@@ -540,7 +539,26 @@ X
   }
   console.log(sm);
 </script>
-<script type="" id="ch0105/010">
+<script type="" id="ch0105/11">
+  var k = Number(prompt());
+  var counter = 1;
+  one = 0;
+  five = 0;
+  ten = 0;
+  while (counter <= k) {
+    var n = Number(prompt());
+    if (n == 1) {
+      one += 1;
+    } else if (n == 5) {
+      five += 1;
+    } else if (n == 10) {
+      ten += 1;
+    }
+    counter += 1;
+  }
+  console.log(one, five, ten);
+</script>
+<script type="" id="ch0105/0">
   var sm = 0;
   var sn = 0;
   var counter = 1;
@@ -558,7 +576,7 @@ X
   }
   console.log(sm);
 </script>
-<script type="" id="ch0105/010">
+<script type="" id="ch0105/0">
   var sm = 0;
   var sn = 0;
   var counter = 1;
@@ -576,25 +594,7 @@ X
   }
   console.log(sm);
 </script>
-<script type="" id="ch0105/010">
-  var sm = 0;
-  var sn = 0;
-  var counter = 1;
-  var m = Number(prompt());
-  var n = Number(prompt());
-  if (m % 2 == 0) {
-    m += 1;
-  }
-  while (m <= n) {
-    if (m % 2 != 0) {
-      sm += m;
-      m = m + 2;
-      counter += 1;
-    }
-  }
-  console.log(sm);
-</script>
-<script type="" id="ch0105/010">
+<script type="" id="ch0105/0">
   var sm = 0;
   var sn = 0;
   var counter = 1;
