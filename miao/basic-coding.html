@@ -402,9 +402,10 @@ X
   var n = Number(prompt());
   var counter = 1;
   var sum = 0;
+  //age
   while (counter <= n) {
     var old = Number(prompt());
-    //不能有空格
+    //+=不能有空格 等同于sum=sum+old，sum初始=0
     sum += old;
     counter += 1;
     average = sum / n;
@@ -450,6 +451,7 @@ X
 <script type="" id="ch0105/05">
   var n = Number(prompt());
   var counter = 1;
+  //max一开始要比输入的任何一个数要小，负数时或保险起见可以设置为-Infinity
   max = 0;
   while (counter <= n) {
     var x = Number(prompt());
@@ -465,6 +467,7 @@ X
   var counter = 1;
   var max = 0;
   var min = 1000;
+  //var min = Infinity
   while (counter <= n) {
     var x = Number(prompt());
     if (x > max) {
@@ -485,10 +488,11 @@ X
   var sgold = 0;
   var ssilver = 0;
   var sbronze = 0;
+  //或counter = 0 counter < n
   while (counter <= n) {
-    var gold = Number(prompt());
-    var silver = Number(prompt());
-    var bronze = Number(prompt());
+    var gold = Number(prompt("金牌"));
+    var silver = Number(prompt("银牌"));
+    var bronze = Number(prompt("铜牌"));
     //前后不能一样
     sgold += gold;
     ssilver += silver;
@@ -558,43 +562,32 @@ X
   }
   console.log(one, five, ten);
 </script>
-<script type="" id="ch0105/0">
-  var sm = 0;
-  var sn = 0;
-  var counter = 1;
+<script type="" id="ch0105/12">
+  var N = Number(prompt());
   var m = Number(prompt());
-  var n = Number(prompt());
-  if (m % 2 == 0) {
-    m += 1;
-  }
-  while (m <= n) {
-    if (m % 2 != 0) {
-      sm += m;
-      m = m + 2;
-      counter += 1;
+  var counter = 0;
+  var number_counter = 0;
+  while (counter < N) {
+    var number = Number(prompt());
+    if (number == m) {
+      number_counter += 1;
     }
+    counter += 1;
   }
-  console.log(sm);
+  console.log(number_counter);
 </script>
-<script type="" id="ch0105/0">
-  var sm = 0;
-  var sn = 0;
-  var counter = 1;
-  var m = Number(prompt());
+<script type="" id="ch0105/13">
+  var counter = 0;
+  var e = 1;
+  var a = Number(prompt());
   var n = Number(prompt());
-  if (m % 2 == 0) {
-    m += 1;
+  while (counter < n) {
+    e = e * a;
+    counter += 1;
   }
-  while (m <= n) {
-    if (m % 2 != 0) {
-      sm += m;
-      m = m + 2;
-      counter += 1;
-    }
-  }
-  console.log(sm);
+  console.log(e);
 </script>
-<script type="" id="ch0105/0">
+<script type="" id="ch0105/14">
   var sm = 0;
   var sn = 0;
   var counter = 1;
