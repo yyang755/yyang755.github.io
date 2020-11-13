@@ -787,10 +787,10 @@ X
 </script>
 <script type="" id="ch0105/20">
   var h = Number(prompt());
-  var s = h;
+  var s = -h;
   for (let i = 0; i < 10; i++) {
-    h = h / 2;
     s += 2 * h;
+    h = h / 2;
   }
   console.log(s);
   console.log(h);
@@ -802,16 +802,57 @@ X
   while (N != 1) {
     if (N % 2 == 1) {
       a = 3 * N + 1;
-      console.log(N, "*3+1=", a);
+      //加号粘结，逗号空格，引号里面会直接输出，不考虑是否为变量
+      console.log(N + "*3+1=" + a);
       N = a;
     } else {
       a = N / 2;
-      console.log(N, "/2=", a);
+      console.log(N + "/2=" + a);
       N = a;
     }
   }
   console.log("End");
 </script>
-<script type="" id="ch0105/17"></script>
-<script type="" id="ch0105/17"></script>
+<script type="" id="ch0105/22">
+  var cash = 0;
+  var total = 0;
+  var saving = 0;
+  var m = 0;
+  var rich = false;
+  var saving_sum = 0;
+  for (let i = 0; i < 12; i++) {
+    var n = Number(prompt());
+    cash = cash + 300 - n;
+    if (cash >= 100) {
+      rich = true;
+      //  +=自加  可简写
+      saving = cash - (cash % 100);
+      saving_sum += saving;
+      cash = cash % 100;
+    } else if (cash < 0) {
+      console.log("-" + m);
+      m += 1;
+      cash = 0;
+    }
+    if (!rich) {
+      total = saving_sum * 1.2 + cash;
+      console.log(total);
+    }
+  }
+</script>
+<script type="" id="ch0105/23">
+  var m = Number(prompt());
+  var n = Number(prompt());
+  var hope_sum = 0;
+  var lack = 0;
+  for (let i = 0; i < n; i++) {
+    var hope = Number(prompt());
+    hope_sum += hope;
+    remind = m - hope_sum;
+    if (remind < 0) {
+      lack = -remind;
+      console.log(lack);
+    }
+  }
+</script>
 <script type="" id="ch0105/17"></script>
