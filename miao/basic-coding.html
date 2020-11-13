@@ -830,18 +830,17 @@ X
       saving_sum += saving;
       cash = cash % 100;
     } else if (cash < 0) {
+      //flag通常与break一起使用，但这里的在最末尾不需要添加，改变顺序需要添加
       poor = true;
       console.log(-m);
       m += 1;
       cash = 0;
     }
   }
-  while (m < 12) {
     if (!poor) {
       total = saving_sum * 1.2 + cash;
       console.log(total);
     }
-  }
 </script>
 <script type="" id="ch0105/23">
   var m = Number(prompt());
