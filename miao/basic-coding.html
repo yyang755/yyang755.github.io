@@ -740,10 +740,13 @@ X
   }
 </script>
 <script type="" id="ch0105/17">
-  var a = 0;
-  var b = 1;
+  var a = 1; //前面加了一项 1
+  var b = 0;
   var k = Number(prompt());
-  for (let i = 1; i < k; i++) {
+  if (k == 0) {
+    console.log(0);
+  }
+  for (let i = 0; i < k; i++) {
     var c = a + b;
     //console.log(c)
     a = b;
@@ -820,41 +823,547 @@ X
   var saving = 0;
   var m = 0;
   var poor = false;
-  var saving_sum = 0;
-  for (let i = 0; i < 12; i++) {
+  //一月对应i=1
+  for (let i = 1; i <= 12; i++) {
     var n = Number(prompt());
     cash = cash + 300 - n;
     if (cash >= 100) {
       //  +=自加  可简写
-      saving = cash - (cash % 100);
-      saving_sum += saving;
+      saving += cash - (cash % 100);
       cash = cash % 100;
     } else if (cash < 0) {
       //flag通常与break一起使用，但这里的在最末尾不需要添加，改变顺序需要添加
       poor = true;
-      console.log(-m);
       m += 1;
       cash = 0;
     }
+    console.log(-m);
   }
-    if (!poor) {
-      total = saving_sum * 1.2 + cash;
-      console.log(total);
-    }
+  if (!poor) {
+    total = saving * 1.2 + cash;
+    console.log(total);
+  }
 </script>
+
 <script type="" id="ch0105/23">
   var m = Number(prompt());
   var n = Number(prompt());
-  var hope_sum = 0;
   var lack = 0;
   for (let i = 0; i < n; i++) {
-    var hope = Number(prompt());
-    hope_sum += hope;
-    remind = m - hope_sum;
-    if (remind < 0) {
-      lack = -remind;
-      console.log(lack);
+    var x = Number(prompt());
+    if () {
+      n -= x
+
+    } else {
+      lack ++
+    }
+  }
+  console.log(lack);
+</script>
+<script type="" id="ch0105/24">
+  var a = Number(prompt());
+  var b = Number(prompt());
+  var isnormal = a >= 90 && a <= 140 && b >= 60 && b <= 90;
+  var max = 0;
+  //状态变化之后，重新计数
+  if (isnormal) {
+    c++;
+    if (c > max) {
+      max = c;
+    }
+  } else {
+    c = 0;
+  }
+  console.log(max);
+</script>
+
+<script type="" id="ch0105/25">
+  for (let i = 1; i < 999; i++) {
+    var a7 = i % 7; //七进制的个位数
+    var b7 = ((i - a7) / 7) % 7; //倒数第二位
+    var c7 = ((i - a7 - b7 * 7) / 7 / 7) % 7; //倒数第三位
+
+    var a9 = i % 9; //九进制的个位数
+    var b9 = ((i - a9) / 9) % 9; //倒数第二位
+    var c9 = ((i - a9 - b9 * 9) / 9 / 9) % 9; //倒数第三位
+
+    if (a7 == c9 && b7 == b9 && c7 == a9) {
+      console.log(i);
+      console.log("" + c7 + b7 + a7);
+      console.log("" + c9 + b9 + a9);
+      break;
     }
   }
 </script>
-<script type="" id="ch0105/17"></script>
+<script type="" id="ch0105/26">
+  for (let i = 0; i < n; i++) {
+    var x = Number(prompt());
+    var g = x % 10;
+    var s = ((x - g) / 10) % 10;
+    var b = ((x - g - s * 10) / 100) % 10;
+    var q = ((x - g - s * 10 - b * 100) / 1000) % 10;
+    if (g - s - b - q > 0) {
+      count++;
+    }
+  }
+  console.log(count);
+</script>
+<script type="" id="ch0105/27">
+  var k = Number(prompt());
+  var s = 0;
+  for (let i = 0; ; i++) {
+    s += 1 / i;
+    if (s > k) {
+      console.log(i);
+      break;
+    }
+  }
+</script>
+<script type="" id="ch0105/28">
+  var n = Number(prompt());
+  while (n > 0) {
+    var digit = n % 10;
+    console.log(digit);
+    n = (n - digit) / 10;
+  }
+</script>
+<script type="" id="ch0105/29">
+  var n = Number(prompt());
+  var isNegative = false;
+  if (n < 0) {
+    n = -n;
+    isNegative = true;
+  }
+  // var result = "";字符串拼出来也可以，最好是算出来的
+  var result = 0;
+  do {
+    //考虑了输入0的情况用dowhile,do更宽容走一遍再筛选掉
+    var digit = n % 10;
+    result = result * 10 + digit;
+    n = (n - digit) / 10;
+  } while (n > 0);
+
+  if (isNegative) {
+    console.log(-result);
+  } else {
+    console.log(result);
+  }
+</script>
+<script type="" id="ch0105/30">
+  var m = Number(prompt());
+  var k = Number(prompt());
+  //声明变量的位置不要写错，可能外层也要用
+  var timesof3 = 0;
+  if (m % 19 != 0) {
+    console.log("NO");
+  } else {
+    while (m > 0) {
+      var digit = m % 10;
+      if (digit === 3) {
+        timesof3++;
+      }
+      m = (m - digit) / 10;
+    }
+    if (timesof3 === k) {
+      console.log("YES");
+    } else {
+      console.log("NO");
+    }
+  }
+</script>
+<script type="" id="ch0105/31">
+  var N = Number(prompt());
+  var M = Number(prompt());
+  for (let n = 1; n <= N; n++) {
+    light = true;
+    for (let m = 1; m <= M; m++) {
+      if (n % m == 0) {
+        light = false;
+      }
+    }
+    if (light == false) {
+      console.log(n);
+    }
+  }
+</script>
+<script type="" id="ch0105/32">
+    var n = Number(prompt());
+    var a = 0;
+    var b = 0;
+    var sum = 0;
+    for (let i = 0; i < n; i++) {
+      c = a + b;
+      sum += c / a;
+    }
+
+ 
+</script>
+<script type="" id="ch0105/33">
+  var n = Number(prompt());
+  var sum = 0;
+  for (let i = 1; i <= n; i++) {
+    if (i % 2 == 0) {
+      sum += 1 / -i;
+    } else {
+      sum += 1 / i;
+    }
+  }
+  console.log(sum.toFixed(4));
+</script>
+
+<script type="" id="ch0105/34">
+  var n = Number(prompt());
+  an = 1;
+  sn = 0;
+  for (let i = 1; i <= n; i++) {
+    an *= i;
+    sn += an;
+  }
+  console.log(sn.toFixed(4));
+</script>
+
+<script type="" id="ch0105/35">
+  var n = Number(prompt());
+  var an = 1;
+  var sn = 1;
+  for (let i = 1; i <= n; i++) {
+    an *= 1 / i;
+    sn += an;
+  }
+  console.log(sn.toFixed(10));
+</script>
+
+<script type="" id="ch0105/36">
+  var x = Number(prompt("请输入x的值"));
+  var n = Number(prompt("请输入n的值"));
+  var an = 1;
+  var sn = 1;
+  for (let i = n; i >= 1; i--) {
+    an *= x;
+    sn += an;
+  }
+  console.log(sn.toFixed(2));
+</script>
+
+<script type="" id="ch0105/37">
+  var m = Math.floor(Number(prompt("input m:")));
+  var n = Math.floor(Number(prompt("input n:")));
+  var x = Math.floor(Number(prompt("input x:")));
+
+  for (var i = 0; i < x; i++) {
+    if (m / n < x) {
+      n += Math.floor(m / n);
+      x--;
+    } else {
+      break;
+    }
+  }
+  console.log(n);
+</script>
+
+<script type="" id="ch0105/44">
+  var n = Number(prompt());
+  var c = 1;
+  var sqrt_n = Math.sqrt(n);
+  for (let i = 2; ; i++) {
+    var isPrime = true;
+    //素数两性定理，大于3的素数都分布在6n+1和6n-1列
+    if (n != 2 || n != 3 || n % 6 != 1 || n % 6 != 5) {
+      for (let j = 2; j <= sqrt_n; j++) {
+        //除的次数太多，2到n / 2 ,再到根号n 因为n * n = a * b
+        //for (let j = 2; j < i; j++) {
+        if (i % j == 0) {
+          isPrime = false;
+          break;
+        }
+      }
+    }
+
+    if (isPrime) {
+      c++;
+      if (c === n) {
+        console.log(i);
+        break;
+      }
+    }
+  }
+</script>
+
+<script type="" id="ch0105/45">
+  //模拟
+  var d = Number(prompt());
+  var sum = 0;
+  var coin = 1; //某天给的金币数量
+  var day = 1; //这种金币给了多少天
+  var count = 1; //这种金币要连续给多少天
+  for (let i = 1; i <= d; i++) {
+    sum += coin;
+    day++;
+    if (day === count) {
+      coin++;
+      count++;
+      day = 0;
+    }
+  }
+  console.log(sum);
+</script>
+<script>
+  var isOdd = function (n) {
+    if (n % 2 == 1) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  //isOdd = function(2)
+  var isPrime = function (n) {
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n == 2 || n == 3) {
+        return true;
+      }
+      if (n % 6 != 1 && n % 6 != 5) {
+        return false;
+      }
+      if (n % i == 0) {
+        return false;
+        //函数不需要flag直接return
+      }
+    }
+    return true;
+  };
+</script>
+
+<script>
+  // sqrt: 求一个正数的平方根
+  //二分法
+  function sqrt(n) {
+    var l = 0;
+    var r = n;
+    while (r - l > 0.0000001) {
+      m = (l + r) / 2;
+      if (m * m == n) {
+        return m;
+      } else if (m * m > n) {
+        r = m;
+      } else if (m * m < n) {
+        l = m;
+      }
+    }
+    return m;
+  }
+
+  function sqrt() {
+    while (Math.abs(x * x - n) > 0.00000001) {
+      var x = n;
+      x = (x + n / x) / 2;
+    }
+    return x;
+  }
+  // narcissistic: 写一个函数判断一个数是否为水仙花数()
+
+  //计算n的十进制的位宽
+  function digitwidth(n) {
+    var width = 0;
+    do {
+      var digit = n % 10;
+      n = (n - digit) / 10;
+      width++;
+    } while (n > 0);
+    return width;
+  }
+  //计算x的n次方
+  function power(x, n) {
+    var exp = 1;
+    for (let i = 0; i < n; i++) {
+      exp *= x;
+    }
+    return exp;
+  }
+  function isNarcissistic(n) {
+    //函数内变量互不影响需要重新声明
+    var width = digitwidth(n);
+    var m = n;
+    var sum = 0;
+    do {
+      var digit = m % 10;
+      m = (m - digit) / 10;
+      sum += power(digit, width);
+    } while (m > 0);
+
+    if (sum == n) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // narcissistics: 输出10000以内的所有水仙花数
+  isNarcissistics(n);
+
+  // factorial: 写函数求阶乘
+  function factorial(n) {
+    var an = 1;
+    for (let i = 1; i <= n; i++) {
+      an *= i;
+    }
+    return an;
+  }
+
+  //写函数判断是否是回文数
+  function isPalindrom(n) {
+    var width = 0;
+    var m = n;
+    do {
+      var digit = m % 10;
+      m = (m - digit) / 10;
+      width++;
+    } while (m > 0);
+
+    m = n;
+    var sum = 0;
+    do {
+      var digit = m % 10;
+      m = (m - digit) / 10;
+      var exp = 1;
+      for (let i = 1; i <= width; i++) {
+        exp *= digit;
+      }
+      sum += exp;
+    } while (m > 0);
+    if (sum == n) {
+      console.log(sum);
+    }
+  }
+  // weekday: 给写年和月，计算这个月的第一天是星期几
+  //2016.3.日0
+  function weekday(year, month) {}
+  // complete-number: 写一个函数求一个数是否为完全数（它的因子之和等于它自己）
+  // complete-numbers: 输出1000以内的所有完数
+  // prime: 判断素数
+  function isPrime(n) {
+    var sqrt_n = Math.sqrt(n);
+    for (let j = 2; j <= sqrt_n; j++) {
+      if (n % j == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+  // primes: 输出1000以内的素数
+
+  // itob: 不使用隐式类型转换将一个数字转换为字符串
+  //因为有些语言没有这个功能，如python
+  function n2c(n) {
+    //number to char
+    if (n == 0) {
+      return "0";
+    }
+    if (n == 1) {
+      return "1";
+    }
+    if (n == 2) {
+      return "2";
+    }
+    if (n == 3) {
+      return "3";
+    }
+    if (n == 4) {
+      return "4";
+    }
+    if (n == 5) {
+      return "5";
+    }
+    if (n == 6) {
+      return "6";
+    }
+    if (n == 7) {
+      return "7";
+    }
+    if (n == 8) {
+      return "8";
+    }
+    if (n == 9) {
+      return "9";
+    }
+  }
+  function itob(n) {
+    while (result > 0) {
+      var digit = n % 10;
+      var result = (n2c(digit) + result) / 10;
+    }
+    return result;
+  }
+  // lcf: 写函数求出两个数的最大公约数
+
+  //辗转相减/更相减损法
+  // lcm: 写函数求出两个数的最小公倍数
+</script>
+<script>
+  // sqrt: 求一个正数的平方根
+  var sqrt = function (n) {
+    var a = n / a;
+    return a;
+  };
+  
+  
+</script>
+function unshift(ary,val) {
+    ary[i] = ary[i - 1]
+    ary[0] = val
+    return ary.length
+
+  }
+  <!-- https://leetcode.com/problems/add-digits/
+https://leetcode.com/problems/fibonacci-number/
+https://leetcode.com/problems/happy-number/
+https://leetcode.com/problems/hamming-distance/
+https://leetcode.com/problems/perfect-number/
+https://leetcode.com/problems/power-of-three/
+https://leetcode.com/problems/base-7/
+https://leetcode.com/problems/valid-perfect-square/
+https://leetcode.com/problems/ugly-number/
+https://leetcode.com/problems/power-of-two/
+https://leetcode.com/problems/power-of-four/
+https://leetcode.com/problems/powx-n/
+https://leetcode.com/problems/sqrtx/
+https://leetcode.com/problems/palindrome-number/
+https://leetcode.com/problems/number-of-1-bits/
+https://leetcode.com/problems/reverse-integer/
+https://leetcode.com/problems/factorial-trailing-zeroes/ 
+
+https://leetcode.com/problems/integer-to-roman
+https://leetcode.com/problems/roman-to-integer
+https://leetcode.com/problems/excel-sheet-column-title
+https://leetcode.com/problems/excel-sheet-column-number
+
+https://leetcode.com/problems/move-zeroes/
+https://leetcode.com/problems/fizz-buzz/
+https://leetcode.com/problems/missing-number/
+https://leetcode.com/problems/plus-one/
+https://leetcode.com/problems/two-sum/
+https://leetcode.com/problems/single-number/
+https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+https://leetcode.com/problems/minimum-moves-to-equal-array-elements/
+https://leetcode.com/problems/counting-bits/
+https://leetcode.com/problems/maximum-subarray/
+https://leetcode.com/problems/count-primes/
+https://leetcode.com/problems/max-consecutive-ones/
+
+
+https://leetcode.com/problems/climbing-stairs/
+
+https://leetcode.com/problems/trapping-rain-water
+https://leetcode.com/problems/merge-sorted-array
+https://leetcode.com/problems/triangle
+https://leetcode.com/problems/pascals-triangle/
+https://leetcode.com/problems/pascals-triangle/
+https://leetcode.com/problems/day-of-the-week/
+https://leetcode.com/problems/search-insert-position/
+
+https://leetcode.com/problems/add-strings/
+https://leetcode.com/problems/add-binary/
+https://leetcode.com/problems/multiply-strings/
+https://leetcode.com/problems/unique-paths/
+https://leetcode.com/problems/unique-paths-ii/
+
+-->

@@ -1,0 +1,281 @@
+<script id="add-digits">
+  //var num = Number(prompt());
+  var sum = 0;
+  function digitsum(num) {
+    var sum = 0;
+    do {
+      var digit = num % 10;
+      sum += digit;
+      var num = (num - digit) / 10;
+    } while (num > 0);
+    return sum;
+  }
+  var sum = digitsum(num);
+  while (sum >= 10) {
+    num = sum;
+    var sum = digitsum(num);
+  }
+  if (sum < 10) {
+    return sum;
+  }
+</script>
+
+<script id="Happy Number">
+  function squaresum(n) {
+    var sum = 0;
+    do {
+      var digit = n % 10;
+      sum += digit ** 2;
+      var n = (n - digit) / 10;
+    } while (n > 0);
+    return sum;
+  }
+  //使用之前不要忘了先应用
+  var sum = squaresum(n);
+  while (sum != 1) {
+    n = sum;
+    var n = squaresum(n);
+    if ((sum = 4)) {
+      return false;
+    }
+  }
+  if (sum == 1) {
+    return true;
+  }
+</script>
+<script id="Happy Number">
+  var digit = n % 2;
+  var n = (n - digit) / ;
+</script>
+<script id="Happy Number">
+  var trailingZeroes = function (n) {
+    var c = 0;
+    for (let i = 5; i <= n; i++) {
+      var j = i;
+      while (j % 5 == 0) {
+        j = j / 5;
+        c++;
+      }
+      return c;
+    }
+
+    function factorial(n) {
+      var sn = 1;
+      for (i = 1; i <= n; i++) {
+        sn *= i;
+      }
+      return sn;
+    }
+  };
+a.push('fizz')
+var sum = 0
+for (let i = 0; i < array.length; i++) {
+     sum += array[i];
+}
+</script>
+创建空数组
+var a = []
+
+创建有初始内容的数组
+var a = [1,2,3+2,4]
+
+创建长为5的空数组
+var a = Array(5)
+var status = Array(length+1)
+获取数组的长度
+a.length
+
+读取数组中的第i项
+a[i]//此处i可以为任意求出整数的表达式
+
+读出数组中的第1项
+a[0]
+
+读出数组中的最后一项
+var x = a.length - 1
+a[x]
+
+为数组的第i项赋值
+a[i] = value
+a[i] += value
+a[i]++
+
+在数组末尾增加一项
+a.push(value)
+
+删除数组末尾的项并返回这一项的值赋给value
+var value = a.pop()
+
+在数组的前面增加一项value
+a.unshift(value)
+
+删除数组第一项并返回这一项的值
+var value = a.shift()
+
+js中的数组可以给任意下标赋值，理论上可以不使用前面的四个函数
+
+nums.splice(pos,1)
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+开始位置  删除个数 要添加的元素
+<script>
+    var a = []
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            a[i - 1] = 'FizzBuzz'
+        } else if (i % 3 == 0) {
+            a[i - 1] = 'Fizz'
+        } else if (i % 5 == 0) {
+            a[i - 1] = 'Buzz'
+        } else {
+            a[i - 1] = '' + i
+        }
+        return a
+    }
+
+    for (let i = nums.length - 1; i >= 0 ; i--) {
+       if (nums[i] === 0) {
+        nums.push(0)
+        nums.splice(i,1)
+    }
+}
+for (let i = 0; i < n; i++) {
+    if (nums[i] = i) {
+        
+    }
+    
+}
+
+for(let i=digits.length-1;i>=0;i--){
+        digits[i]++;
+        if(digits[i]>9){
+            digits[i]=0;
+        }
+        else{
+            return digits;
+        }
+    }
+    digits.unshift(1);
+    return digits;
+</script>
+<script>
+    if (n == 0) {
+        return 1
+    }
+    else n * factorial(n-1)
+
+    function sn(n) {
+        if (n == 1) {
+            return 1
+        }
+        else {
+            return (n + sn(n - 1))
+        }
+    }
+    
+</script>
+<script>//条件互斥不需要else
+    function powxn(x, n) {
+        if (n == 0) {
+           return 1 
+        }
+        if (n % 2 == 0) {//n >> 1右移一位
+            var t = power(x, n / 2)
+            return t * t
+        }
+        if (n % 2 == 1) {
+            var t = power(x, n >> 1)
+            return t * t * x
+        }
+    }
+</script>
+<script>
+var fibbs = [0, 1, 1, 2, 3, 5, 8]
+
+function fibb(n) {
+  if (fibbs[n] > 0) {
+    return fibbs[n]
+  }
+  if (n < 3) {
+    return 1
+  }
+  var val = fibb(n - 1) + fibb(n - 2)
+  fibbs[n] = val
+  return val
+}
+</script>
+
+<script>
+  function power(x, n) {
+  var t = x
+  var exp = 1
+  var rest = n // 还差多少次方
+  var result = 1
+
+  while (rest > 0) {
+    if (exp * 2 > rest) { // t不能继续自乘了
+      result *= t
+      rest = rest - exp
+      t = x // t重新从x的1次方开始自乘
+      exp = 1 // 记录t现在是x的多少次方
+    } else {
+      t = t * t
+      exp = exp * 2 // 记录t现在是x的多少次方
+    }
+  }
+
+  return result
+}
+
+function power(x, n) {
+  var result = 1
+
+  while (n) {
+    if (n & 1) {// n的二进形式个位数为1
+      result *= x
+    }
+    n >>= 1
+    x = x * x
+  }
+
+  return result
+}
+
+function power(x, n) {
+  if (n == 0) {
+    return 1
+  }
+  var t = power(x, n >> 1)
+  if ((n & 1) == 0) {
+    return t * t
+  } else {
+    return t * t * x
+  }
+}
+
+</script>
+
+<script>
+      function push(ary, val) {
+  ary[ary.length] = val
+  return ary.length
+}
+function unshift(ary, val) {
+  for (var i = ary.length; i > 0; i--) {
+    ary[i] = ary[i - 1]
+  }
+  ary[0] = val
+  return ary.length
+}
+
+function join(ary, str) {
+  str = String(str)
+  var result = ''
+  for (var i = 0; i < ary.length - 1; i++) {
+    result += ary[i] + str
+  }
+  return result + ary[i]
+}
+function indexOf(ary, val) {
+  for (var i = 0; i)
+}                                                 
+</script>

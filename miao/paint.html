@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <canvas width="400" height="300"></canvas>
+    <canvas width="400" height="400"></canvas>
   </body>
   <script>
     var canvas = document.querySelector("canvas");
@@ -53,5 +53,129 @@
   </script>
   <script>
     // YOUR CODE GOES BELOW
+    for (let x = 0; x < 400; x++) {
+      dot(x, 10, "red");
+    }
+
+    for (let x = 0; x < 400; x++) {
+      if (x % 2 == 0) {
+        dot(x, 20, "red");
+      }
+    }
+
+    for (let x = 0; x < 400; x++) {
+      if (x % 4 < 2) {
+        dot(x, 30, "lime");
+      }
+    }
+    for (let x = 0; x < 400; x++) {
+      if (x % 5 < 3) {
+        dot(x, 40, "tan");
+      }
+    }
+
+    for (let x = 0; x < 400; x++) {
+      dot(x, x);
+    }
+
+    // 画一条30度的斜线（选做）
+    var sqrt_3 = Math.sqrt(3);
+    for (let x = 0; x < 400; x++) {
+      var y = x / sqrt_3;
+      dot(x, y);
+    }
+
+    // 在四个角画分别画一条45度的斜线以让画面看起来像一个相框
+
+    for (let x = 0; x < 400; x++) {
+      var y = -x + 40;
+      dot(x, y, "red");
+    }
+    for (let x = 0; x < 400; x++) {
+      var y = x - 360;
+      dot(x, y, "red");
+    }
+    for (let x = 0; x < 400; x++) {
+      var y = -x + 760;
+      dot(x, y, "red");
+    }
+    for (let x = 0; x < 400; x++) {
+      var y = x + 360;
+      dot(x, y, "red");
+    }
+
+    // 画一条跨越画布左上角和右下角的对角线 4比3
+    var dx = 4;
+    var dy = 3;
+    var yy = 0;
+    var y = 0;
+    for (let x = 0; x < 400; x++) {
+      dot(x, y);
+      yy += dy;
+      if (yy > dx) {
+        y++;
+        yy -= dx;
+      }
+    }
+
+    // 画一个空心矩形
+    for (let x = 40; x < 100; x++) {
+      dot(x, 300);
+    }
+    for (let x = 40; x < 100; x++) {
+      dot(x, 360);
+    }
+    for (let y = 300; y < 360; y++) {
+      dot(40, y);
+    }
+    for (let y = 300; y < 361; y++) {
+      dot(100, y);
+    }
+    // 画一个实心矩形
+
+    for (let y = 300; y < 360; y++) {
+      for (let x = 120; x < 180; x++) {
+        dot(x, y);
+      }
+    }
+    // 画一个rgb色彩空间的某一面
+
+    for (let y = 0; y < 256; y++) {
+      for (let x = 0; x < 256; x++) {
+        //很难拼的不要就地写，可以输出看看对不对
+        var color = "rgb(" + x + ", " + y + "," + "255)";
+        //console.log(color)
+        dot(x, y, color);
+      }
+    }
+    // 画一个空心的圆
+
+    //极坐标
+     var r = 50 
+     for (let theta = 0; theta < 2 * Math.PI; theta += 0.01) {
+       var x = r * Math.cos(theta)
+       var y = r * Math.sin(theta)
+       dot(x + 200, y + 200)
+     }
+     //偏移
+     debugger;
+     var x = 0 
+     var y = 50
+     var r = 150
+     do {
+      var y = Math.sqrt(r * r - x * x)
+       dot(x + 200, y + 200, 'red')
+       dot(x + 200, -y + 200, 'red')
+       dot(-x + 200, y + 200, 'red')
+       dot(-x + 200, -y + 200, 'red')
+       dot(y + 200, x + 200, 'red')
+       dot(-y + 200, x + 200, 'red')
+       dot(y + 200, -x + 200, 'red')
+       dot(-y + 200, -x + 200, 'red')
+       x++
+     } while (x < y);
+    // 画一个实心的圆
+    // 画一个大小合适的sin(x)的图像
   </script>
+  
 </html>
