@@ -1,4 +1,4 @@
-var yyang755 = (function () {
+var yyang755 = function () {
   function chunk(ary, size) {
     var res = [];
     var i = 0;
@@ -73,4 +73,4 @@ var yyang755 = (function () {
     differenceBy,
     drop,
   };
-})();
+}();
