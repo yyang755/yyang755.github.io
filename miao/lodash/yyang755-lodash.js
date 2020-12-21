@@ -8,7 +8,7 @@ var yyang755 = function () {
     }
     for (let j = 0; j < ary.length; j++) {
       if (c < size) {
-        res.push(ary[j]);
+        (res[i]).push(ary[j]);
         c++;
       }
       if (c == size) {
@@ -31,31 +31,34 @@ var yyang755 = function () {
     var res = [...ary];
     for (let i = 0; i < args.length; i++) {
       if (Array.isArray(args[i])) {
-        res.push(...args[i]);
-      } else res.push(args[i]);
-    }
+          res.push(...args[i]);
+      } else {
+          res.push(args[i]);
+        }
     return res;
   }
   //过滤数组中与其他数组相同的部分
   function difference(ary, ...args) {
     var res = [];
-      var grounp = concat([], ...args);
+    var grounp = concat([], ...args);
       //var res = [].concat(...ary)
     for (let i = 0; i < ary.length; i++) {
       if (grounp.indexOf(ary[i]) == -1) {
         res.push(ary[i]);
       }
-      }
+    }
     //return ary.filter(it => indexOf(it) == -1)
     return res;
-  }
+    }
+    
   function differenceBy(ary, ...args) {
     var func = args[args.length - 1];
     var res = 0;
     if (typeof func == "function") {
     }
-  }
-  function drop(ary, n) {
+    }
+    
+    function drop(ary, n) {
     var res = [];
     if (n == undefined) {
       ary.shift(ary[0]);
@@ -65,8 +68,19 @@ var yyang755 = function () {
       res.push(ary[i]);
     }
     return res;
+    }
+    
+    function dropRight(ary, n) {
+        if (n == undefined) {
+           ary.pop()
+           return ary
+        }
+        for (let i = ary.length; i > n; i--) {
+            ary.pop()
+        }
+        return ary
+    
   }
-
   return {
     chunk,
     compact,
@@ -74,5 +88,6 @@ var yyang755 = function () {
     difference,
     differenceBy,
     drop,
+    dropRight,
   };
 }();
