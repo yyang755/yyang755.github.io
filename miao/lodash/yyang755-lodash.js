@@ -8,7 +8,7 @@ var yyang755 = function () {
     }
     for (let j = 0; j < ary.length; j++) {
       if (c < size) {
-        res[i].push(ary[j]);
+        res.push(ary[j]);
         c++;
       }
       if (c == size) {
@@ -39,12 +39,14 @@ var yyang755 = function () {
   //过滤数组中与其他数组相同的部分
   function difference(ary, ...args) {
     var res = [];
-    var grounp = concat(ary, ...args);
+      var grounp = concat([], ...args);
+      //var res = [].concat(...ary)
     for (let i = 0; i < ary.length; i++) {
       if (grounp.indexOf(ary[i]) == -1) {
         res.push(ary[i]);
       }
-    }
+      }
+    //return ary.filter(it => indexOf(it) == -1)
     return res;
   }
   function differenceBy(ary, ...args) {
