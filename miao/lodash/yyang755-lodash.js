@@ -18,6 +18,7 @@ var yyang755 = function () {
     }
     return res;
   }
+
   function compact(ary) {
     var res = [];
     for (let i = 0; i < ary.length; i++) {
@@ -27,6 +28,7 @@ var yyang755 = function () {
     }
     return res;
   }
+
   function concat(ary, ...args) {
     var res = [...ary];
     for (let i = 0; i < args.length; i++) {
@@ -38,6 +40,7 @@ var yyang755 = function () {
       return res;
     }
   }
+
   //过滤数组中与其他数组相同的部分
   function difference(ary, ...args) {
     var res = [];
@@ -51,6 +54,7 @@ var yyang755 = function () {
     //return ary.filter(it => indexOf(it) == -1)
     return res;
   }
+
   //先传进函数之后筛选第一个不相同参数
   function differenceBy(ary, ...args) {
     var func = args[args.length - 1];
@@ -81,6 +85,7 @@ var yyang755 = function () {
     }
     return ary;
   }
+
   function ary(f, n = f.length) {
     return function (...args) {};
   }
@@ -139,5 +144,5 @@ var yyang755 = function () {
     flip,
     negate,
     spread,
-  };
-}();
+  }
+} ();
