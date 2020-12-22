@@ -50,7 +50,7 @@ var yyang755 = function () {
     //return ary.filter(it => indexOf(it) == -1)
     return res;
     }
-    
+  //先传进函数之后筛选第一个不相同参数  
   function differenceBy(ary, ...args) {
     var func = args[args.length - 1];
     var res = 0;
@@ -80,7 +80,55 @@ var yyang755 = function () {
         }
         return ary
     
-  }
+    }
+    function ary(f, n = f.length) {
+      return function (...args) {
+
+
+      }
+    }
+
+    //https://xiaoxiami.gitbook.io/lodash/function/before
+    function before(n, func) {
+      return function (...args) {
+        if (c < n) {
+          return result = func.call(this, ...args)
+          c++
+        } else {
+          return result
+        }
+      }
+    }
+
+    function after(n, func) {
+      var c = 0
+      return function (...args) {
+        c++
+        if (c > n) {
+          return result = func.call(this, ...args)
+          c++
+        }
+      }
+    }
+
+    function flip(func) {
+      return function (...args) {
+        return func(...args.reverse())
+      }
+    }
+    //创建一个针对断言函数func结果取反的函数。func断言函数被调用的时候，this绑定到创建的函数，并传入对应参数。
+    function negate(predicate) {
+      return function (...args) {
+        return !predicate(...args)
+      }
+    }
+    
+    function spread(func) {
+      return function (ary) {
+        return func.f(this, ary)
+      }
+    }
+
   return {
     chunk,
     compact,
@@ -89,5 +137,10 @@ var yyang755 = function () {
     differenceBy,
     drop,
     dropRight,
+    after,
+    before,
+    flip,
+    negate,
+    spread,
   };
-}();
+}()
