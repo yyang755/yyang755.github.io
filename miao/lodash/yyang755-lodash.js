@@ -1,7 +1,7 @@
 //多调试 多写注释
 //http://02f9az.coding-pages.com/lodash-oj8/
 //http://lodash.think2011.net/chunk
-var yyang755 = (function () {
+var yyang755 = function () {
   function chunk(array, size) {
     var result = [];
     var count = -1;
@@ -218,4 +218,4 @@ var yyang755 = (function () {
     spread,
     forOwn,
   };
-})();
+}();
