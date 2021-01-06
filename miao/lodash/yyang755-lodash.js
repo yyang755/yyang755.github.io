@@ -56,7 +56,6 @@ var yyang755 = function () {
     }
     return res;
   }
-
   //过滤数组中与其他数组（可能多个数组）相同的部分，不需要额外考虑二维数组，indexOf都能直接判断
   function difference(array, ...values) {
     var res = [];
@@ -71,7 +70,7 @@ var yyang755 = function () {
   }
 
   //先传进函数之后筛选第一个不相同参数
-  function differenceBy(array, ...values) {}
+  function differenceBy(array, ...values) { }
   //drop删除
   function drop(array, n) {
     var res = [];
