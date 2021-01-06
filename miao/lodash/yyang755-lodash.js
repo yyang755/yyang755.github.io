@@ -209,7 +209,6 @@ var yyang755 = function () {
     fill,
     findIndex,
     findLastIndex,
-    array,
     after,
     before,
     flip,
