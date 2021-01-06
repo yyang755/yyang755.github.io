@@ -125,10 +125,10 @@ var yyang755 = function () {
     var f = iteratee(predicate);
     for (let i = fromIndex; i < collection.length; i++) {
       if (f(collection[i])) {
-         break
+        break
       }
     }
-    return i; 
+    return i;
   }
 
   function findLastIndex(
@@ -142,7 +142,22 @@ var yyang755 = function () {
         break;
       }
     }
-    return i; 
+    return i;
+  }
+
+  function iteratee(predicate) {
+    if (typeof predicate === 'function') {
+      return predicate
+    }
+    if (typeof predicate === 'string') {
+      return property(predicate)
+    }
+    if (Array.isArray(predicate)) {
+      return matchesProperty(predicate)
+    }
+    if (typeof predicate === 'object') {
+      return matches(predicate)
+    }
   }
 
   //https://xiaoxiami.gitbook.io/lodash/function/before
@@ -212,6 +227,7 @@ var yyang755 = function () {
     fill,
     findIndex,
     findLastIndex,
+    iteratee,
     after,
     before,
     flip,
