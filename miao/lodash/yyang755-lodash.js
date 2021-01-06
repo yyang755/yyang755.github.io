@@ -145,6 +145,65 @@ var yyang755 = function () {
     return i;
   }
 
+  function get(object, path, defaultValues) {
+    var names = path.split('.')
+    for (var name of names) {
+      if (name in Object(object)) {
+        object = object[name]
+      } else
+        return defaultValues
+    }
+    return object
+  }
+
+  function property(path) {
+    // return bind(get, null, window, path)
+    return function (obj) {
+      return get(obj, path)
+    }
+  }
+
+  function isMatch(obj, src) {
+    for (let key in src) {
+      if (src[key] && typeof src[key] === 'object') {
+        if (!isMatch(obj[key], src[key])) {
+          return false
+        }
+      } else {
+        if (obj[key] !== src[key]) {
+          return false
+        }
+      }
+    }
+    return true
+  }
+
+  function matches(src) {
+    return bind(isMatch, null, window, src)
+  }
+
+  function matchesProperty(path, srcValue) {
+    if (Array.isArray(path)) {
+      srcValue = path[1]
+      path = path[0]
+    }
+    return (obj) => {
+      return obj[path] == srcValue
+    }
+  }
+
+  function bind(f, thisArg, ...partials) {
+    return function (...args) {
+      var copy = partials.slice()
+      for (var i = 0; i < copy.length; i++) {
+        if (copy[i] === window) {
+          copy[i] = args.shift()
+        }
+      }
+      return f.call(thisArg, ...copy, ...args)
+    }
+  }
+
   function iteratee(predicate) {
     if (typeof predicate === 'function') {
       return predicate
@@ -227,6 +286,12 @@ var yyang755 = function () {
     fill,
     findIndex,
     findLastIndex,
+    get,
+    property,
+    isMatch,
+    matchesProperty,
+    bind,
+    matches,
     iteratee,
     after,
     before,
