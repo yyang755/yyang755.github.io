@@ -7,7 +7,7 @@ var yyang755 = function () {
     var count = -1;
     for (var i = 0; i < array.length; i++) {
       if (i % size == 0) {
-        result.push(array[i]); // 外层push
+        result.push([array[i]]); // 外层push,把数组直接push进去
         count++;
       } else {
         result[count].push(array[i]); // 内层push
@@ -18,7 +18,7 @@ var yyang755 = function () {
     // var i = 0;
     // var c = 0;
     // for (var i = 0; i < Math.ceil(array.length / size); i++) {
-    //   res[i] = [];
+    //   res[i] = [];二维数组
     // }
     // for (let j = 0; j < array.length; j++) {
     //   if (c < size) {
@@ -122,7 +122,7 @@ var yyang755 = function () {
     if (fromIndex < 0) {
       return -1;
     }
-    predicate = _iteratee(predicate);
+    var predicate = _iteratee(predicate);
     for (let i = fromIndex; i < collection.length; i++) {
       if (predicate(collection[i])) {
         return i;
@@ -136,7 +136,7 @@ var yyang755 = function () {
     predicate,
     fromIndex = collection.length - 1
   ) {
-    predicate = _iteratee(predicate);
+    var predicate = _iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
       if (predicate(collection[i])) {
         return i;
@@ -157,6 +157,7 @@ var yyang755 = function () {
     };
   }
 
+  // 反向版 _.before。 这个方法创建一个新函数，当调用 N 次或者多次之后将触发 func 方法。
   function after(n, func) {
     var c = 0;
     return function (...values) {
@@ -180,6 +181,8 @@ var yyang755 = function () {
     };
   }
 
+  // 创建一个调用 func 的函数。 this 绑定到这个函数上。 把参数作为数组传入，类似于 Function#apply
+  // 注意: 这个方法基于 spread operator
   function spread(func) {
     return function (array) {
       return func.f(this, array);
