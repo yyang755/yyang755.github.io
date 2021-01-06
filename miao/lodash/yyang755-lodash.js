@@ -120,15 +120,15 @@ var yyang755 = function () {
   //遍历集合中的元素，返回<最先>经 predicate 检查为真值的元素下标。
   function findIndex(collection, predicate, fromIndex = 0) {
     if (fromIndex < 0) {
-      return -1;
+      return -1;//程序失败
     }
-    var predicate = _iteratee(predicate);
+    var f = iteratee(predicate);
     for (let i = fromIndex; i < collection.length; i++) {
-      if (predicate(collection[i])) {
-        return i;
+      if (f(collection[i])) {
+         break
       }
     }
-    return -1; //程序失败
+    return i; 
   }
 
   function findLastIndex(
@@ -136,13 +136,13 @@ var yyang755 = function () {
     predicate,
     fromIndex = collection.length - 1
   ) {
-    var predicate = _iteratee(predicate);
+    var f = iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
-      if (predicate(collection[i])) {
-        return i;
+      if (f(collection[i])) {
+        break;
       }
     }
-    return -1; //程序失败
+    return i; 
   }
 
   //https://xiaoxiami.gitbook.io/lodash/function/before
