@@ -118,32 +118,51 @@ var yyang755 = function () {
     return array;
   }
   //遍历集合中的元素，返回<最先>经 predicate 检查为真值的元素下标。
-  function findIndex(collection, predicate, fromIndex = 0) {
-    if (fromIndex < 0) {
-      return -1;//程序失败
-    }
+  function findIndex(array, predicate, fromIndex = 0) {
     var f = iteratee(predicate);
-    for (let i = fromIndex; i < collection.length; i++) {
-      if (f(collection[i])) {
+    for (let i = fromIndex; i < array.length; i++) {
+      if (f(array[i])) {
         break
       }
     }
     return i;
   }
 
-  function findLastIndex(
-    collection,
-    predicate,
-    fromIndex = collection.length - 1
+  function findLastIndex(array, predicate, fromIndex = array.length - 1
   ) {
     var f = iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
-      if (f(collection[i])) {
+      if (f(array[i])) {
         break;
       }
     }
     return i;
   }
+  
+  function flatten(array) {
+    return [].concat(...array)
+  }
+
+  function flattendeep(array) {
+    while (array.some(item => Array.isArray(item))) {
+      array = [].concat(array)
+    }
+    return array
+
+    let res = []
+    for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+            let ary = flattenDeep(array[i])
+            for (let j = 0; j < ary.length; j++) {
+                res.push(ary[j])
+            }
+        } else {
+            res.push(array[i])
+        }
+    }
+    return res
+  }
+
 
   function get(object, path, defaultValues) {
     var names = path.split('.')
@@ -286,6 +305,9 @@ var yyang755 = function () {
     fill,
     findIndex,
     findLastIndex,
+    flatten,
+    flattendeep,
+    flattendepth,
     get,
     property,
     isMatch,
