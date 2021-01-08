@@ -221,19 +221,29 @@ var yyang755 = function () {
   }
 
   function indexOf(array, value, fromIndex) {
-    if (fromIndex < 0) {
-      fromIndex += array.length
-    }
-    for (let i = fromIndex; i < array.length; i++) {
-      if (array[i] === value) {
-        return i
+    if (fromIndex) {
+      if (fromIndex < 0) {
+        fromIndex += array.length
+      }
+      for (let i = fromIndex; i < array.length; i++) {
+        if (array[i] === value) {
+          return i
+        }
       }
     }
-    return -1
+    if (!fromIndex) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+          return i
+        }
+      }
+      return -1
+    }
   }
 
+
   function initial(array) {//倒数第一是-1
-    return array.slice(0, array.length)//array.splice(-1)  array.pop()
+    return array.slice(0, array.lengthv - 1)//array.splice(-1)  array.pop()
 
   }
 
