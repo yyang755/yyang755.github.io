@@ -47,8 +47,8 @@ var yyang755 = function () {
     var res = [...array];
     for (var i = 0; i < values.length; i++) {
       //遍历两种情况
-      //array.isarray() 用于确定传递的值是否是一个 array。
-      if (array.isarray(values[i])) {
+      //Array.isArray() 用于确定传递的值是否是一个 array。
+      if (Array.isArray(values[i])) {
         res.push(...values[i]); //二维数组
       } else {
         res.push(values[i]);
@@ -138,7 +138,7 @@ var yyang755 = function () {
     }
     return i;
   }
-  
+
   function flatten(array) {
     return [].concat(...array)
   }
@@ -149,20 +149,43 @@ var yyang755 = function () {
     }
     return array
 
-    let res = []
-    for (let i = 0; i < array.length; i++) {
-        if (Array.isArray(array[i])) {
-            let ary = flattenDeep(array[i])
-            for (let j = 0; j < ary.length; j++) {
-                res.push(ary[j])
-            }
-        } else {
-            res.push(array[i])
-        }
-    }
-    return res
+    // let res = []
+    // for (let i = 0; i < array.length; i++) {
+    //     if (Array.isArray(array[i])) {
+    //         let ary = flattenDeep(array[i])
+    //         for (let j = 0; j < ary.length; j++) {
+    //             res.push(ary[j])
+    //         }
+    //     } else {
+    //         res.push(array[i])
+    //     }
+    // }
+    // return res
   }
 
+  function flattendepth(array, depth = 1) {
+    var c = 0
+    while (array.some(item => Array.isArray(item))) {
+      array = [].concat(...array)
+      c++
+    }
+    if (c == depth) {
+      return array
+    }
+  }
+
+  function isArguments(value) {
+    return Object.prototype.toString.call(value) == '[object Argument]'
+    //return getType(values) === "[object Arguments]"
+  }
+  function isArray(value) {
+    return Object.prototype.toString.call(value) == '[object Array]'
+  }
+
+  function isBoolean(value) {
+    return getType(value) == '[object Boolean]'
+
+  }
 
   function get(object, path, defaultValues) {
     var names = path.split('.')
@@ -180,6 +203,61 @@ var yyang755 = function () {
     return function (obj) {
       return get(obj, path)
     }
+  }
+
+  function fromPairs(pairs) {
+    var result = {}
+    for (var array of pairs) {
+      result[array[0]] = array[1]
+      //result[pairs[i][0]] = pairs[i][1]
+      //从二维数组中取出一维数组使得一维数组中的第二个元素对应对象中的第一个属性值
+    }
+    return result
+  }
+
+  function head(array) {
+    return array[0]
+    //return (array && array.length) ? array[0] : undefined;
+  }
+
+  function indexOf(array, value, fromIndex) {
+    if (fromIndex < 0) {
+      fromIndex += array.length
+    }
+    for (let i = fromIndex; i < array.length; i++) {
+      if (array[i] === value) {
+        return i
+      }
+    }
+    return -1
+  }
+
+  function initial(array) {//倒数第一是-1
+    return array.slice(0, array.length)//array.splice(-1)  array.pop()
+
+  }
+
+  function intersection(...arrays) {
+    let result = []
+    for (let i = 0; i < arrays[0].length; i++) {
+      for (let j = 1; j < arrays.length; j++) {
+        if (!arrays[j].includes(arrays[0][i])) {
+          break
+        }
+        if (j == arrays.length - 1) {
+          result.push(arrays[0][i])
+        }
+      }
+      return result
+    }
+  }
+
+  function join(array, separator = ',') {
+    let res = ''
+    for (let i = 0; i < array.length; i++) {
+      res += array[i] + '' + separator
+    }
+    return res.slice(0, res.length - 1)
   }
 
   function isMatch(obj, src) {
@@ -308,6 +386,13 @@ var yyang755 = function () {
     flatten,
     flattendeep,
     flattendepth,
+    fromPairs,
+    head,
+    indexOf,
+    initial,
+    intersection,
+    join,
+    last,
     get,
     property,
     isMatch,
