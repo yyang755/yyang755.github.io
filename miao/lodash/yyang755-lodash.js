@@ -143,7 +143,7 @@ var yyang755 = function () {
     return [].concat(...array)
   }
 
-  function flattendeep(array) {
+  function flattenDeep(array) {
     while (array.some(item => Array.isArray(item))) {
       array = [].concat(array)
     }
