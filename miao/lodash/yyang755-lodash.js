@@ -176,14 +176,14 @@ var yyang755 = function () {
 
   function isArguments(value) {
     return Object.prototype.toString.call(value) == '[object Argument]'
-    //return getType(values) === "[object Arguments]"
+    //return typeJudge(values) === "[object Arguments]"
   }
   function isArray(value) {
     return Object.prototype.toString.call(value) == '[object Array]'
   }
 
   function isBoolean(value) {
-    return getType(value) == '[object Boolean]'
+    return typeJudge(value) == '[object Boolean]'
 
   }
 
@@ -246,7 +246,7 @@ var yyang755 = function () {
     return array.slice(0, array.lengthv - 1)//array.splice(-1)  array.pop()
 
   }
-
+  //求交集
   function intersection(...arrays) {
     let result = []
     for (let i = 0; i < arrays[0].length; i++) {
@@ -268,6 +268,163 @@ var yyang755 = function () {
       res += array[i] + '' + separator
     }
     return res.slice(0, res.length - 1)
+  }
+
+  //迭代反向  下标没有反向还是原来顺序 fromIndex和检索结果也是
+  //  'canal'.lastIndexOf('a');     // returns 3 （没有指明fromIndex则从末尾l处开始反向检索到的第一个a出现在l的后面，即index为3的位置）
+  //  'canal'.lastIndexOf('a', 2);  // returns 1（指明fromIndex为2则从n处反向向回检索到其后面就是a，即index为1的位置）
+  //  'canal'.lastIndexOf('a', 0);  // returns -1(指明fromIndex为0则从c处向左回向检索a发现没有，故返回-1)
+  function lastIndexOf(array, value,) {
+    if (fromIndex) {
+      if (fromIndex < 0) {
+        fromIndex += array.length
+      }
+      for (let i = fromIndex; i >= 0; i--) {
+        if (array[i] === value) {
+          return i
+        }
+      }
+    }
+    if (!fromIndex) {
+      for (let i = array.lenghth - 1; i > 0; i--) {
+        if (array[i] === value) {
+          return i
+        }
+      }
+      return -1
+    }
+  }
+
+  function nth(array, n) {
+    if (n >= 0) {
+      return array[n]
+    } else {
+      return array[n + array.length]
+    }
+  }
+
+  function pull(array, values) {
+    for (var key of values) {
+      while (array.includes(key)) {
+        array.splice(array.indexOf(key), 1)
+      }
+    }
+    return array
+  }
+  //这里values只能是数组
+  function pullAll(array, values) {
+    for (var key of values) {
+      while (array.includes(key)) {
+        array.splice(array.indexOf(key), 1)
+      }
+    }
+    return array
+  }
+  //函数不清楚控制台试一试
+  function pullAllBy(ary, vals, itee) {
+    itee = iteratee(itee)
+    //let same = itee(vals.shift())//取出第一项返回
+    for (let i = 0; i < ary.length; i++) {
+      for (let j = 0; j < vals.length; j++) {
+        if (itee(ary[i]) == itee(vals[j])) {
+          ary.splice(i, 1)//从i起取出几项返回，但一般要的是ary
+        }
+      }
+      return ary
+    }
+  }
+  function pullAllWith(array, values, comparator) {
+    for (var i = 0; i < values.length; i++) {
+      for (var j = 0; j < array.length; j++) {
+        if (comparator(array[j], values[i])) {
+          array.splice(j, 1)
+        }
+      }
+    }
+    return array
+
+    // itee = iteratee(itee)
+    // while (vals[0] !== undefined) {
+    //     let same = vals.shift()
+    //     for (let i = 0; i < ary.length; i++) {
+    //         if (itee(same, ary[i])) {
+    //             ary.splice(i, 1)
+    //             i--
+    //         }
+    //     }
+    // }
+    // return ary
+  }
+
+  function reverse(array) {
+    var result = []
+    for (var i = array.length - 1; i > 0; i--) {
+      result.push(array[i])
+    }
+    return result
+  }
+
+  function sortedIndex(array, value) {//二分
+    var left = 0
+    var right = array.length - 1
+    if (right == left) {
+      if (array[left] < value) {
+        return 1
+      }
+      return 0
+    }
+
+    while (right != left) {
+      var mid = (left + right) >> 1
+      if (array[mid] >= value) {
+        right = mid
+      } else {
+        left = mid + 1//mid已经验证
+      }
+    }
+    return right
+  }
+
+  // Array.from() 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组。
+  // Set对象是值的集合，你可以按照插入的顺序迭代它的元素。 Set中的元素只会出现一次，即 Set 中的元素是唯一的。
+  function union(...array) {
+    return Array.from(new Set([].concat(...array)))
+    //return [...new Set([].concat(...arrays))]
+  }
+
+  // includes检查 值 是否在 集合中，如果集合是字符串，那么检查 值 是否在字符串中。
+  function includes(collection, value, fromIndex = 0) {
+    fromIndex = fromIndex >= 0 ? fromIndex : collection.length + fromIndex
+    if (_isObject(collection)) {
+      for (let key in collection) {
+        if (collection[key] === value) return true
+      }
+    } else if (isArray(collection)) {
+      for (let i = fromIndex; i < collection.length; i++) {
+        if (collection[i] === value) return true
+      }
+    } else if (isString(collection)) {
+      if (collection.includes(value)) return true
+    }
+    return false
+  }
+
+  function typeJudge(val) {
+    var judge = Object.prototype.toString
+    return judge.call(val)
+  }
+
+  // if (typeJudge(val) == "[object Function]") { return res}
+  // if (typeJudge(val) == "[object Object]") { return res}
+  // if (typeJudge(val) == "[object Array]") { return res}
+  // if (typeJudge(val) == "[object String]") { return res}
+  // if (typeJudge(val) == "[object Number]") {return res}
+  // if (typeJudge(val) == "[object Boolean]") { return }
+  // if (typeJudge(val) == "[object Null]") {return }
+  // if (typeJudge(val) == "[object Undefined]") {return }
+
+  function without(array, values) {
+    return array.filter(it => !values.includes(it))
   }
 
   function isMatch(obj, src) {
@@ -394,13 +551,38 @@ var yyang755 = function () {
     findIndex,
     findLastIndex,
     flatten,
-    flattendeep,
-    flattendepth,
+    flattenDeep,
+    flattenDepth,
     fromPairs,
     head,
     indexOf,
     initial,
     intersection,
+    nth,
+    pull,
+    lastIndexOf,
+    pullAll,
+    pullAllBy,
+    pullAllWith,
+    reverse,
+    sortedIndex,
+    union,
+    without,
+    xor,
+    zip,
+    countBy,
+    every,
+    filter,
+    find,
+    flatMap,
+    flatMapDepth,
+    forEach,
+    grounpBy,
+    keyBy,
+    map,
+    partition,
+    includes,
+    typeJudge,
     join,
     last,
     get,
@@ -417,4 +599,4 @@ var yyang755 = function () {
     spread,
     forOwn,
   };
-}();
+}()
