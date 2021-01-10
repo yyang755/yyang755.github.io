@@ -163,7 +163,7 @@ var yyang755 = function () {
     // return res
   }
 
-  function flattendepth(array, depth = 1) {
+  function flattenDepth(array, depth = 1) {
     var c = 0
     while (array.some(item => Array.isArray(item))) {
       array = [].concat(...array)
@@ -551,7 +551,7 @@ var yyang755 = function () {
     findIndex,
     findLastIndex,
     flatten,
-    flattenDeep,
+    //flattenDeep,
     flattenDepth,
     fromPairs,
     head,
