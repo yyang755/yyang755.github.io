@@ -286,7 +286,7 @@ var yyang755 = function () {
       }
     }
     if (!fromIndex) {
-      for (let i = array.lenghth - 1; i > 0; i--) {
+      for (let i = array.length - 1; i > 0; i--) {
         if (array[i] === value) {
           return i
         }
@@ -373,7 +373,6 @@ var yyang755 = function () {
       }
       return 0
     }
-
     while (right != left) {
       var mid = (left + right) >> 1
       if (array[mid] >= value) {
@@ -539,6 +538,134 @@ var yyang755 = function () {
     return obj;
   }
 
+  function xor(arrays) {
+    var array = [].concat(arrays)//.flatten()
+    for (let i = 0; i < array.length; i++) {
+      if (array.lastIndexOf(array[i] != i)) {
+        array.pull(array, array[i])
+        i = 0
+      }
+    }
+    return array
+  }
+
+  function zip(arrays) {
+    var result = []
+    var n = arrays.reduce((a, b) => {//得到最长的数组长度
+      if (a.length > b.length) return a
+      else {
+        return b
+      }
+    })
+    for (let i = 0; i < n.length; i++) {
+      result.push([])
+    }
+    for (let i = 0; i < n.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        result[j][i] = arrays[i][j]//内外相反
+      }
+    }
+    return result
+  }
+
+  // 这个函数会处理每一个元素
+  //   [iteratee=_.identity] (Function|Object|string)
+  //   [predicate=_.identity] (Function|Object|string)
+  function every(collection, predicate) {
+    var predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      if (!predicate(collection[i])) {
+        return false//返回布尔值
+      }
+    }
+    return true
+  }
+
+  function filter(collection, predicate) {
+    var result = []
+    predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      if (iteratee(collection[i])) {
+        result.push(collection[i])//返回所有元素集合
+      }
+    }
+    return result
+  }
+
+  // findIndex() 方法，它返回数组中找到的元素的索引，而不是其值。
+  // 如果你需要找到一个元素的位置或者一个元素是否存在于数组中，使用Array.prototype.indexOf() 或 Array.prototype.includes()。
+  //遍历集合中的元素，返回`最先`经 predicate 检查为真值的元素。
+  function find(collection, predicate, fromIndex = 0) {
+    predicate = iteratee(predicate)
+    for (let i = fromIndex; i < collection.length; i++) {
+      if (iteratee(collection[i])) {
+        return collection[i]//返回元素
+      }
+    }
+    return undefined
+  }
+  function findLast(collection, predicate, fromIndex = collection.length - 1) {
+    predicate = iteratee(predicate)
+    for (let i = collection.length; i > 0; i--) {
+      if (iteratee(collection[i])) {
+        return collection[i]
+      }
+    }
+    return undefined
+  }
+
+  function flatMap(collection, predicate) {
+    var result = []
+    predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      result.push(predicate(collection[i]))
+    }
+    return flattenDeep(result)
+  }
+
+  function flatMapDeep(collection, predicate) {
+    var result = []
+    predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      result.push(predicate(collection[i]))
+    }
+    return flattenDeep(result)
+  }
+
+  function flatMapDepth(params) {
+    var result = []
+    predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      result.push(predicate(collection[i]))
+    }
+    return flattenDepth(result)
+  }
+  // 注意: 与其他集合方法一样，对象的 length 属性也会被遍历，避免这种情况，可以用 .forIn 或者 .forOwn 代替。
+  function forEach(collection, iteratee) {
+    for (var key in collection) {
+      //iteratee = iteratee(iteratee)
+      iteratee(collection[key], key, collection)
+    }
+    return collection
+  }
+
+  function grounpBy() {
+
+  }
+
+  function map(collection, iteratee) {
+    var result = []
+    if (typeJudge(collection) == "[object Array]") {
+      for (let i = 0; i < collection.length; i++) {
+        result.push(iteratee(collection[i], i, collection))
+      }
+    }
+    if (typeJudge(collection) == "[object Object]") {
+      result.push(iteratee(collection[key], key, collection))
+    }
+    return result
+  }
+
   return {
     chunk,
     compact,
@@ -551,7 +678,7 @@ var yyang755 = function () {
     findIndex,
     findLastIndex,
     flatten,
-    //flattenDeep,
+    flattenDeep,
     flattenDepth,
     fromPairs,
     head,
@@ -568,18 +695,18 @@ var yyang755 = function () {
     sortedIndex,
     union,
     without,
-    //xor,
-    //zip,
+    xor,
+    zip,
     //countBy,
-    //every,
-    //filter,
-    //find,
-    //flatMap,
-    //flatMapDepth,
-    //forEach,
+    every,
+    filter,
+    find,
+    flatMap,
+    flatMapDepth,
+    forEach,
     //grounpBy,
     //keyBy,
-   // map,
+    map,
     //partition,
     includes,
     typeJudge,
