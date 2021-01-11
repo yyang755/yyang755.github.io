@@ -695,7 +695,7 @@ var yyang755 = function () {
     sortedIndex,
     union,
     without,
-    xor,
+    //xor,
     zip,
     //countBy,
     every,
