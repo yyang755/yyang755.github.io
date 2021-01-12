@@ -70,7 +70,7 @@ var yyang755 = function () {
   }
 
   //先传进函数之后筛选第一个不相同参数
-  function differenceBy(array, ...values) { }
+  //function differenceBy(array, ...values) { }
   //drop删除
   function drop(array, n) {
     var res = [];
@@ -321,7 +321,7 @@ var yyang755 = function () {
 
   //函数不清楚控制台试一试
   function pullAllBy(array, values, itee) {//function pullAllBy(array, ...values, itee)扩展运算符只能在末尾
-  //错误：Line 323: Rest element must be last element
+    //错误：Line 323: Rest element must be last element
     itee = iteratee(itee)
     //let same = itee(values.shift())//取出第一项返回
     for (let i = 0; i < array.length; i++) {
@@ -464,7 +464,7 @@ var yyang755 = function () {
           copy[i] = args.shift()
         }
       }
-      return f.call(thisArg, ...copy, ...args)
+      return f.call(thisArg, copy, ...args)
     }
   }
 
