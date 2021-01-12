@@ -118,25 +118,23 @@ var yyang755 = function () {
     return array;
   }
   //遍历集合中的元素，返回<最先>经 predicate 检查为真值的元素下标。
-  function findIndex(array, predicate, fromIndex = 0) {
-    var f = iteratee(predicate);
-    for (let i = fromIndex; i < array.length; i++) {
-      if (f(array[i])) {
-        break
+  function findIndex(collection, predicate, fromIndex = 0) {
+    predicate = iteratee(predicate);
+    for (let i = fromIndex; i < collection.length; i++) {
+      if (predicate(collection[i])) {
+        return i
       }
     }
-    return i;
   }
 
-  function findLastIndex(array, predicate, fromIndex = array.length - 1
+  function findLastIndex(collection, predicate, fromIndex = array.length - 1
   ) {
-    var f = iteratee(predicate);
+    predicate = iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
-      if (f(array[i])) {
-        break;
+      if (predicate(collection[i])) {
+        return i
       }
     }
-    return i;
   }
 
   function flatten(array) {
@@ -145,16 +143,16 @@ var yyang755 = function () {
 
   function flattenDeep(array) {
     while (array.some(item => Array.isArray(item))) {
-      array = [].concat(array)
+      array = [].concat(...array)//...
     }
     return array
 
     // let res = []
     // for (let i = 0; i < array.length; i++) {
     //     if (Array.isArray(array[i])) {
-    //         let ary = flattenDeep(array[i])
-    //         for (let j = 0; j < ary.length; j++) {
-    //             res.push(ary[j])
+    //         let array = flattenDeep(array[i])
+    //         for (let j = 0; j < array.length; j++) {
+    //             res.push(array[j])
     //         }
     //     } else {
     //         res.push(array[i])
@@ -168,9 +166,9 @@ var yyang755 = function () {
     while (array.some(item => Array.isArray(item))) {
       array = [].concat(...array)
       c++
-    }
-    if (c == depth) {
-      return array
+      if (c == depth) {
+        return array
+      }
     }
   }
 
@@ -241,9 +239,9 @@ var yyang755 = function () {
     }
   }
 
-
-  function initial(array) {//倒数第一是-1
-    return array.slice(0, array.lengthv - 1)//array.splice(-1)  array.pop()
+  // 获取数组中除了最后一个元素之外的所有元素
+  function initial(array) {//倒数第一是-1 即负数加length等于正常index（即正数index）
+    return array.slice(0, array.length - 1)//array.splice(-1)  array.pop()
 
   }
   //求交集
@@ -270,11 +268,11 @@ var yyang755 = function () {
     return res.slice(0, res.length - 1)
   }
 
-  //迭代反向  下标没有反向还是原来顺序 fromIndex和检索结果也是
+  //迭代反向 ,下标没有反向还是原来顺序 fromIndex和检索结果也是
   //  'canal'.lastIndexOf('a');     // returns 3 （没有指明fromIndex则从末尾l处开始反向检索到的第一个a出现在l的后面，即index为3的位置）
   //  'canal'.lastIndexOf('a', 2);  // returns 1（指明fromIndex为2则从n处反向向回检索到其后面就是a，即index为1的位置）
   //  'canal'.lastIndexOf('a', 0);  // returns -1(指明fromIndex为0则从c处向左回向检索a发现没有，故返回-1)
-  function lastIndexOf(array, value,) {
+  function lastIndexOf(array, value, fromIndex) {
     if (fromIndex) {
       if (fromIndex < 0) {
         fromIndex += array.length
@@ -303,7 +301,7 @@ var yyang755 = function () {
     }
   }
 
-  function pull(array, values) {
+  function pull(array, ...values) {//...不加...调试的时候只有一个元素
     for (var key of values) {
       while (array.includes(key)) {
         array.splice(array.indexOf(key), 1)
@@ -313,7 +311,7 @@ var yyang755 = function () {
   }
   //这里values只能是数组
   function pullAll(array, values) {
-    for (var key of values) {
+    for (let key of values) {
       while (array.includes(key)) {
         array.splice(array.indexOf(key), 1)
       }
@@ -321,19 +319,19 @@ var yyang755 = function () {
     return array
   }
   //函数不清楚控制台试一试
-  function pullAllBy(ary, vals, itee) {
+  function pullAllBy(array, ...vals, itee) {
     itee = iteratee(itee)
     //let same = itee(vals.shift())//取出第一项返回
-    for (let i = 0; i < ary.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < vals.length; j++) {
-        if (itee(ary[i]) == itee(vals[j])) {
-          ary.splice(i, 1)//从i起取出几项返回，但一般要的是ary
+        if (itee(array[i]) == itee(vals[j])) {
+          array.splice(i, 1)//从i起取出几项返回，但一般要的是array
         }
       }
-      return ary
+      return array
     }
   }
-  function pullAllWith(array, values, comparator) {
+  function pullAllWith(array, ...values, comparator) {
     for (var i = 0; i < values.length; i++) {
       for (var j = 0; j < array.length; j++) {
         if (comparator(array[j], values[i])) {
@@ -346,19 +344,19 @@ var yyang755 = function () {
     // itee = iteratee(itee)
     // while (vals[0] !== undefined) {
     //     let same = vals.shift()
-    //     for (let i = 0; i < ary.length; i++) {
-    //         if (itee(same, ary[i])) {
-    //             ary.splice(i, 1)
+    //     for (let i = 0; i < array.length; i++) {
+    //         if (itee(same, array[i])) {
+    //             array.splice(i, 1)
     //             i--
     //         }
     //     }
     // }
-    // return ary
+    // return array
   }
 
   function reverse(array) {
     var result = []
-    for (var i = array.length - 1; i > 0; i--) {
+    for (var i = array.length - 1; i >= 0; i--) {//=
       result.push(array[i])
     }
     return result
@@ -422,7 +420,7 @@ var yyang755 = function () {
   // if (typeJudge(val) == "[object Null]") {return }
   // if (typeJudge(val) == "[object Undefined]") {return }
 
-  function without(array, values) {
+  function without(array, ...values) {//...
     return array.filter(it => !values.includes(it))
   }
 
@@ -538,9 +536,9 @@ var yyang755 = function () {
     return obj;
   }
 
-  function xor(arrays) {
-    var array = [].concat(arrays)//.flatten()
-    for (let i = 0; i < array.length; i++) {
+  function xor(...arrays) {//...多个数组，
+    var array = [].concat(...arrays)//.flatten()
+    for (let i = 0; i < arrays.length; i++) {
       if (array.lastIndexOf(array[i] != i)) {
         array.pull(array, array[i])
         i = 0
@@ -549,7 +547,7 @@ var yyang755 = function () {
     return array
   }
 
-  function zip(arrays) {
+  function zip(...arrays) {
     var result = []
     var n = arrays.reduce((a, b) => {//得到最长的数组长度
       if (a.length > b.length) return a
@@ -561,7 +559,7 @@ var yyang755 = function () {
       result.push([])
     }
     for (let i = 0; i < n.length; i++) {
-      for (let j = 0; j < array[i].length; j++) {
+      for (let j = 0; j < arrays[i].length; j++) {
         result[j][i] = arrays[i][j]//内外相反
       }
     }
@@ -585,7 +583,7 @@ var yyang755 = function () {
     var result = []
     predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
-      if (iteratee(collection[i])) {
+      if (predicate(collection[i])) {
         result.push(collection[i])//返回所有元素集合
       }
     }
@@ -616,7 +614,7 @@ var yyang755 = function () {
 
   function flatMap(collection, predicate) {
     var result = []
-    predicate = iteratee(predicate)
+    //predicate = iteratee(predicate)  ?
     for (let i = 0; i < collection.length; i++) {
       result.push(predicate(collection[i]))
     }
@@ -625,7 +623,7 @@ var yyang755 = function () {
 
   function flatMapDeep(collection, predicate) {
     var result = []
-    predicate = iteratee(predicate)
+    //predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
       result.push(predicate(collection[i]))
     }
@@ -634,7 +632,7 @@ var yyang755 = function () {
 
   function flatMapDepth(params) {
     var result = []
-    predicate = iteratee(predicate)
+    //predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
       result.push(predicate(collection[i]))
     }
@@ -661,7 +659,9 @@ var yyang755 = function () {
       }
     }
     if (typeJudge(collection) == "[object Object]") {
-      result.push(iteratee(collection[key], key, collection))
+      for (var key of collection) {
+        result.push(iteratee(collection[key], key, collection))
+      }
     }
     return result
   }
@@ -695,13 +695,14 @@ var yyang755 = function () {
     sortedIndex,
     union,
     without,
-    //xor,
+    xor,
     zip,
     //countBy,
     every,
     filter,
     find,
     flatMap,
+    flatMapDeep,
     flatMapDepth,
     forEach,
     //grounpBy,
