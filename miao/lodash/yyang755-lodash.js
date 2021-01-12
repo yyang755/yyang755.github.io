@@ -320,20 +320,21 @@ var yyang755 = function () {
   }
 
   //函数不清楚控制台试一试
-  // function pullAllBy(array, ...values, itee) {
-  //   itee = iteratee(itee)
-  //   //let same = itee(values.shift())//取出第一项返回
-  //   for (let i = 0; i < array.length; i++) {
-  //     for (let j = 0; j < values.length; j++) {
-  //       if (itee(array[i]) == itee(values[j])) {
-  //         array.splice(i, 1)//从i起取出几项返回，但一般要的是array
-  //       }
-  //     }
-  //   }
-  //   return array
-  // }
+  function pullAllBy(array, values, itee) {//function pullAllBy(array, ...values, itee)扩展运算符只能在末尾
+  //错误：Line 323: Rest element must be last element
+    itee = iteratee(itee)
+    //let same = itee(values.shift())//取出第一项返回
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < values.length; j++) {
+        if (itee(array[i]) == itee(values[j])) {
+          array.splice(i, 1)//从i起取出几项返回，但一般要的是array
+        }
+      }
+    }
+    return array
+  }
 
-  function pullAllWith(array, ...values, comparator) {
+  function pullAllWith(array, values, comparator) {
     for (var i = 0; i < values.length; i++) {
       for (var j = 0; j < array.length; j++) {
         if (comparator(array[j], values[i])) {
