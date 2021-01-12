@@ -600,6 +600,7 @@ var yyang755 = function () {
       }
       return false
     }
+  }
   function swapNode(a, b) {
     if (isInside(a, b) && isInside(b, a)) {
       throw new Error('a or b contains the other node, can not execute swap')
@@ -688,7 +689,7 @@ var yyang755 = function () {
   }
 
 
-    
+
   return {
     chunk,
     compact,
