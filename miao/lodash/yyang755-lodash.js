@@ -394,16 +394,16 @@ var yyang755 = function () {
 
   // includes检查 值 是否在 集合中，如果集合是字符串，那么检查 值 是否在字符串中。
   function includes(collection, value, fromIndex = 0) {
-    fromIndex = fromIndex >= 0 ? fromIndex : collection.length + fromIndex
-    if (_isObject(collection)) {
-      for (let key in collection) {
+    fromIndex = fromIndex >= 0 ? fromIndex : collection.length + fromIndex//
+    if (typeJudge(collection) == "[object Object]") {
+      for (let key in collection) {//in
         if (collection[key] === value) return true
       }
-    } else if (isArray(collection)) {
+    } else if (typeJudge(collection) == "[object Array]") {
       for (let i = fromIndex; i < collection.length; i++) {
         if (collection[i] === value) return true
       }
-    } else if (isString(collection)) {
+    } else if (typeJudge(collection) == "[object String]") {
       if (collection.includes(value)) return true
     }
     return false
@@ -541,7 +541,7 @@ var yyang755 = function () {
 
   function xor(...arrays) {//...多个数组，
     var array = [].concat(...arrays)//.flatten()
-    for (let i = 0; i < arrays.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (array.lastIndexOf(array[i] != i)) {
         array.pull(array, array[i])
         i = 0
@@ -557,7 +557,7 @@ var yyang755 = function () {
       else {
         return b
       }
-    })
+    }, 0)//, 0
     for (let i = 0; i < n.length; i++) {
       result.push([])
     }
@@ -591,6 +591,24 @@ var yyang755 = function () {
       }
     }
     return result
+  }
+
+  function isInside(node, target) {//判断是否是父子节点祖先
+    for (; node !== null; node = node.parentNode) {
+      if (node == target) {
+        return true
+      }
+      return false
+    }
+  function swapNode(a, b) {
+    if (isInside(a, b) && isInside(b, a)) {
+      throw new Error('a or b contains the other node, can not execute swap')
+    }
+    var dummy = document.creatTextNode('a')
+    b.parentNode.insertBefore(dummy, b)
+    a.parentNode.insertBefore(b, a)
+    dummy.parentNode.insertBefore(a, dummy)
+    dummy.parentNode.removeChild(dummy)
   }
 
   // findIndex() 方法，它返回数组中找到的元素的索引，而不是其值。
@@ -662,13 +680,15 @@ var yyang755 = function () {
       }
     }
     if (typeJudge(collection) == "[object Object]") {
-      for (var key of collection) {
+      for (var key in collection) {//in
         result.push(iteratee(collection[key], key, collection))
       }
     }
     return result
   }
 
+
+    
   return {
     chunk,
     compact,
