@@ -70,7 +70,7 @@ var yyang755 = function () {
   }
 
   //先传进函数之后筛选第一个不相同参数
-  function differenceBy(array, ...values) { }
+  //function differenceBy(array, ...values) { }
   //drop删除
   function drop(array, n) {
     var res = [];
@@ -674,7 +674,7 @@ var yyang755 = function () {
     compact,
     concat,
     difference,
-    differenceBy,
+    //differenceBy,
     drop,
     dropRight,
     fill,
