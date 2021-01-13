@@ -552,17 +552,19 @@ var yyang755 = function () {
 
   function zip(...arrays) {
     var result = []
-    var n = arrays.reduce((a, b) => {//得到最长的数组长度
-      if (a.length > b.length) return a
-      else {
-        return b
-      }
-    }, 0)//, 0
-    for (let i = 0; i < n.length; i++) {
+    var m = arrays.length
+    var n = arrays[0].length
+    // var n = arrays.reduce((a, b) => {//得到最长的数组长度
+    //   if (a.length > b.length) return a
+    //   else {
+    //     return b
+    //   }
+    //}, 0)//, 0
+    for (let i = 0; i < n; i++) {
       result.push([])
     }
-    for (let i = 0; i < n.length; i++) {
-      for (let j = 0; j < arrays[i].length; j++) {
+    for (let i = 0; i < m; i++) {
+      for (let j = 0; j < n; j++) {
         result[j][i] = arrays[i][j]//内外相反
       }
     }
@@ -573,7 +575,7 @@ var yyang755 = function () {
   //   [iteratee=_.identity] (Function|Object|string)
   //   [predicate=_.identity] (Function|Object|string)
   function every(collection, predicate) {
-    var predicate = iteratee(predicate)
+    predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
       if (!predicate(collection[i])) {
         return false//返回布尔值
@@ -652,7 +654,7 @@ var yyang755 = function () {
     return flattenDeep(result)
   }
 
-  function flatMapDepth(params) {
+  function flatMapDepth(collection, predicate) {
     var result = []
     //predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
@@ -675,6 +677,7 @@ var yyang755 = function () {
 
   function map(collection, iteratee) {
     var result = []
+    iteratee = iteratee(iteratee)
     if (typeJudge(collection) == "[object Array]") {
       for (let i = 0; i < collection.length; i++) {
         result.push(iteratee(collection[i], i, collection))
@@ -687,8 +690,33 @@ var yyang755 = function () {
     }
     return result
   }
+  // 创建一个拆分为两部分的数组。 第一部分是 predicate 检查为真值的，第二部分是 predicate 检查为假值的。
+  function partition(collection, predicate) {
+    var result = [[], []]
+    predicate = iteratee(predicate)
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate(collection[i])) {
+        result[0].push(collection[i])
+      }
+      else {
+        result[1].push(collection[i])
+      }
+    }
+    return result
+  }
 
-
+  function reduce(collection, iteratee, accumulator) {
+    //var result = accumulator
+    var start = 0
+    if (accumulator == undefined) {
+      accumulator = collection[0]
+      start = 1
+    }
+    for (var i = start; i < collection.length; i++) {
+      accumulator = iteratee(accumulator, collection[i], i, collection)
+    }
+    return accumulator
+  }
 
   return {
     chunk,
@@ -721,6 +749,9 @@ var yyang755 = function () {
     without,
     xor,
     zip,
+    isBoolean,
+    isArray,
+    isArguments,
     //countBy,
     every,
     filter,
@@ -732,7 +763,7 @@ var yyang755 = function () {
     //grounpBy,
     //keyBy,
     map,
-    //partition,
+    partition,
     includes,
     typeJudge,
     join,
