@@ -712,12 +712,12 @@ var yyang755 = function () {
     var start = 0
     if (typeJudge(collection) == "[object Object]") {
       if (accumulator == undefined) {
-          accumulator = {}
+        accumulator = {}
       }
       for (let key in collection) {
-          accumulator = iteratee(accumulator, collection[key], key, collection)
+        accumulator = iteratee(accumulator, collection[key], key, collection)
       }
-  }
+    }
     if (accumulator == undefined) {
       accumulator = collection[0]
       start = 1
@@ -769,7 +769,7 @@ var yyang755 = function () {
   function size(collection) {
     if (typeof collection == 'object') {
       return Object.keys(collection).length
-  }
+    }
     return collection.length
     //return collection.length || Object.keys(collection).length
   }
@@ -942,7 +942,7 @@ var yyang755 = function () {
   }
 
   function name(params) {
-    
+
   }
 
   return {
