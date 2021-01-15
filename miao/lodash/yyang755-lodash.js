@@ -695,10 +695,10 @@ var yyang755 = function () {
     var result = [[], []]
     predicate = iteratee(predicate)
     for (let i = 0; i < collection.length; i++) {
-      if (predicate(collection[i])) {
+      if (predicate(collection[i]) == true) {
         result[0].push(collection[i])
       }
-      else {
+      else if (predicate(collection[i]) == false){
         result[1].push(collection[i])
       }
     }
@@ -718,12 +718,235 @@ var yyang755 = function () {
     return accumulator
   }
 
+  function reduceRight(collection, iteratee, accumulator) {
+    var start = collection.length - 1
+    if (accumulator == undefined) {
+      accumulator = collection[collection.length - 1]
+      start = collection.length - 2// - 2
+    }
+    for (var i = start; i >= 0; i--) {
+      accumulator = iteratee(accumulator, collection[i], i, collection)
+    }
+    return accumulator
+  }
+
+  function sampleSize(collection, n = 0) {
+    var result = []
+    if (n == 0) {
+      return result
+    }
+    for (let i = 0; i < n; i++) {
+      result.push(collection[Math.floor(Math.random() * collection.length)])
+    }
+    return result
+  }
+
+  // 从集合中随机获得元素 
+  // | 或	两个位都为0时，结果才为0  与或非
+  // ^	异或	两个位相同为0，相异为1
+  function sample(collection) {
+    var idx = Math.floor(Math.random() * collection.length)
+    return collection[idx]
+    //return collection.splice(idx, 1)
+  }
+
+
+  function shuffle(collection) {
+    return sampleSize(collection, collection.length)
+  }
+
+  function size(collection) {
+    return collection.length
+  }
+
+  function some(collection, iteratee) {
+    iteratee = iteratee(iteratee)
+    for (let i = 0; i < collection.length; i++) {
+      if (iteratee(collection[i])) {
+        return true
+      }
+    }
+    return false
+  }
+
+  function defer(func, ...args) {
+    var id = setTimeout(func, 1, ...args)
+    return id - 1
+  }
+
+  function delay(func, wait, ...args) {
+    var id = setTimeout(func, wait, ...args)
+    return id - 1
+  }
+
+  function isDate(value) {
+    return typeJudge(value) == "[object Date]"
+    //return value instanceof Date
+  }
+
+  function isElement(values) {
+    return typeJudge(value) == "[object HTMLBodyElement]"
+  }
+  function isEmpty(value) {
+    if (typeJudge(value) == "[object String]" && value.length > 0) {
+      return false
+    }
+    if (typeJudge(value)== "[object Array]" && value.length > 0) {
+      return false
+    }
+    var tem = []
+    if (typeJudge(value)== "[object Object]") {
+      for (var key in value) {
+        tem.push(key)
+      }
+      if (tem.length > 0) {
+        return false
+      }
+    }
+    return true
+  }
+
+  function isError(value) {
+    return typeJudge(value) == "[object Error]"
+  }
+
+  // 检查 value 是否是 finite number。
+  function isFinite(value) {
+    if (!typeJudge(value) == "[object Number]") return false
+    if (value == Infinity || value == - Infinity) {
+      return false
+    }
+    return true
+  }
+
+  function isFunction(value) {
+    return typeJudge(value) == "[object Function]"
+  }
+  // valueOf() 方法返回指定对象的原始值。
+  function isNaN(value) {
+    if (typeof value == "object") {
+      val = val.valueof()
+    }
+    return value !== value
+  }
+
+  // 检查 value 是否是 null 或者 undefined。
+  function isNil(value) {
+    return value == null
+  }
+
+  function isNull(value) {
+    return value == null && value == undefined
+    //return value === null
+  }
+
+  function isNumber(value) {
+    return typeJudge(value) == "[object Number]"
+  }
+
+  function isObject(value) {
+    return typeJudge(value) == "[object Object]"
+  }
+
+  function isRegExp(value) {
+    return typeJudge(value) == "[object RegExp]"
+  }
+
+  function isString(value) {
+    return  typeJudge(value) == "[object String]"
+  }
+
+  function isUdefined(value) {
+    return value === undefined
+  }
+
+  function toArray(value) {
+    var result = []
+    for (var key in value) {
+      result.push(value[key])//key
+    }
+    return result
+  }
+
+  function ceil(number, precision) {
+    return Math.ceil(number * (10 ** precision)) / 10 ** precision// 先化为只有一位小数的数，以利用mathceil方法然后还原
+  }
+
+  function max(array) {
+    var max = -Infinity
+    if (!array.length) {
+      return undefined
+    }
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > max) max = array[i]
+    }
+    return max
+  }
+
+  function maxBy(array, iteratee) {
+    var max = -Infinity
+    var iteratee = iteratee(iteratee)
+    if (!array.length) {
+      return undefined
+    }
+    for (let i = 0; i < array.length; i++) {
+      if (iteratee(array[i]) > max) max = iteratee(array[i])
+    }
+    return max
+  }
+
+  function min(array) {
+    var min = Infinity
+    if (!array.length) {
+      return undefined
+    }
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] < min) {
+        min = array[i]
+      }
+    }
+    return min
+  }
+
+  function minBy(array, iteratee) {
+    var min = Infinity
+    iteratee = iteratee(iteratee)
+    if (!array.length) {
+      return undefined
+    }
+    for (let i = 0; i < array.length; i++) {
+      if (iteratee(array[i]) < min) {
+        min = iteratee(array[i])
+      }
+    }
+    return min
+  }
+
+  function round(round, precision) {
+    return Math.round(number * (10 ** precision)) / 10 ** precision
+  }
+  
   return {
     chunk,
     compact,
     concat,
     difference,
+    some,
+    size,
+    shuffle,
+    isDate, 
+    isElement,
+    isEmpty,
+    isError,
+    isString,
+    isRegExp,
+    isNumber,
+    isNull,
+    isNaN,
+    isNil,
     //differenceBy,
+    sample,
+    sampleSize,
     drop,
     dropRight,
     fill,
@@ -775,6 +998,8 @@ var yyang755 = function () {
     bind,
     matches,
     iteratee,
+    reduce,
+    reduceRight,
     after,
     before,
     flip,
