@@ -118,16 +118,16 @@ var yyang755 = function () {
     return array;
   }
   //遍历集合中的元素，返回<最先>经 predicate 检查为真值的元素下标。
-  function findIndex(collection, predicate, fromIndex = 0) {
-    predicate = iteratee(predicate);
-    for (let i = fromIndex; i < collection.length; i++) {
-      if (predicate(collection[i])) {
-        return i
-      }
+  function findIndex(array, predicate, fromIndex = 0) {
+    if (fromIndex < 0) return -1
+    predicate = iteratee(predicate)
+    for (let i = fromIndex; i < array.length; i++) {
+        if (predicate(array[i])) return i
     }
+    return -1
   }
 
-  function findLastIndex(collection, predicate, fromIndex = array.length - 1
+  function findLastIndex(collection, predicate, fromIndex = collection.length - 1
   ) {
     predicate = iteratee(predicate);
     for (let i = fromIndex; i >= 0; i--) {
@@ -282,6 +282,7 @@ var yyang755 = function () {
           return i
         }
       }
+      return -1//
     }
     if (!fromIndex) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -309,6 +310,7 @@ var yyang755 = function () {
     }
     return array
   }
+  
   //这里values只能是数组
   function pullAll(array, values) {
     for (let key of values) {
@@ -543,7 +545,7 @@ var yyang755 = function () {
     var array = [].concat(...arrays)//.flatten()
     for (let i = 0; i < array.length; i++) {
       if (array.lastIndexOf(array[i] != i)) {
-        array.pull(array, array[i])
+        array = pull(array, array[i])//
         i = 0
       }
     }
@@ -925,7 +927,7 @@ var yyang755 = function () {
   function round(round, precision) {
     return Math.round(number * (10 ** precision)) / 10 ** precision
   }
-  
+
   return {
     chunk,
     compact,
@@ -944,6 +946,17 @@ var yyang755 = function () {
     isNull,
     isNaN,
     isNil,
+    isUdefined,
+    isFunction,
+    defer,
+    toArray,
+    isFinite,
+    ceil,
+    max,
+    maxBy,
+    min,
+    minBy,
+    round,
     //differenceBy,
     sample,
     sampleSize,
