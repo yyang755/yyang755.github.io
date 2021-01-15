@@ -122,7 +122,7 @@ var yyang755 = function () {
     if (fromIndex < 0) return -1
     predicate = iteratee(predicate)
     for (let i = fromIndex; i < array.length; i++) {
-        if (predicate(array[i])) return i
+      if (predicate(array[i])) return i
     }
     return -1
   }
@@ -310,7 +310,7 @@ var yyang755 = function () {
     }
     return array
   }
-  
+
   //这里values只能是数组
   function pullAll(array, values) {
     for (let key of values) {
@@ -700,7 +700,7 @@ var yyang755 = function () {
       if (predicate(collection[i]) == true) {
         result[0].push(collection[i])
       }
-      else if (predicate(collection[i]) == false){
+      else if (predicate(collection[i]) == false) {
         result[1].push(collection[i])
       }
     }
@@ -793,11 +793,11 @@ var yyang755 = function () {
     if (typeJudge(value) == "[object String]" && value.length > 0) {
       return false
     }
-    if (typeJudge(value)== "[object Array]" && value.length > 0) {
+    if (typeJudge(value) == "[object Array]" && value.length > 0) {
       return false
     }
     var tem = []
-    if (typeJudge(value)== "[object Object]") {
+    if (typeJudge(value) == "[object Object]") {
       for (var key in value) {
         tem.push(key)
       }
@@ -855,7 +855,7 @@ var yyang755 = function () {
   }
 
   function isString(value) {
-    return  typeJudge(value) == "[object String]"
+    return typeJudge(value) == "[object String]"
   }
 
   function isUdefined(value) {
@@ -936,7 +936,7 @@ var yyang755 = function () {
     some,
     size,
     shuffle,
-    isDate, 
+    isDate,
     isElement,
     isEmpty,
     isError,
