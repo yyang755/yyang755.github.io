@@ -710,6 +710,14 @@ var yyang755 = function () {
   function reduce(collection, iteratee, accumulator) {
     //var result = accumulator
     var start = 0
+    if (typeJudge(collection) == "[object Object]") {
+      if (accumulator == undefined) {
+          accumulator = {}
+      }
+      for (let key in collection) {
+          accumulator = iteratee(accumulator, collection[key], key, collection)
+      }
+  }
     if (accumulator == undefined) {
       accumulator = collection[0]
       start = 1
@@ -757,14 +765,19 @@ var yyang755 = function () {
     return sampleSize(collection, collection.length)
   }
 
+  // Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致 。
   function size(collection) {
+    if (typeof collection == 'object') {
+      return Object.keys(collection).length
+  }
     return collection.length
+    //return collection.length || Object.keys(collection).length
   }
 
-  function some(collection, iteratee) {
-    iteratee = iteratee(iteratee)
+  function some(collection, predicate) {
+    predicate = iteratee(predicate)//
     for (let i = 0; i < collection.length; i++) {
-      if (iteratee(collection[i])) {
+      if (predicate(collection[i])) {
         return true
       }
     }
@@ -786,7 +799,7 @@ var yyang755 = function () {
     //return value instanceof Date
   }
 
-  function isElement(values) {
+  function isElement(value) {
     return typeJudge(value) == "[object HTMLBodyElement]"
   }
   function isEmpty(value) {
@@ -814,7 +827,7 @@ var yyang755 = function () {
 
   // 检查 value 是否是 finite number。
   function isFinite(value) {
-    if (!typeJudge(value) == "[object Number]") return false
+    if (typeJudge(value) !== "[object Number]") return false
     if (value == Infinity || value == - Infinity) {
       return false
     }
@@ -827,7 +840,7 @@ var yyang755 = function () {
   // valueOf() 方法返回指定对象的原始值。
   function isNaN(value) {
     if (typeof value == "object") {
-      val = val.valueof()
+      value = value.valueof()
     }
     return value !== value
   }
@@ -838,7 +851,7 @@ var yyang755 = function () {
   }
 
   function isNull(value) {
-    return value == null && value == undefined
+    return value == null && value !== undefined
     //return value === null
   }
 
@@ -871,7 +884,7 @@ var yyang755 = function () {
   }
 
   function ceil(number, precision) {
-    return Math.ceil(number * (10 ** precision)) / 10 ** precision// 先化为只有一位小数的数，以利用mathceil方法然后还原
+    return Math.ceil(number * (10 ** precision)) / (10 ** precision)// 先化为只有一位小数的数，以利用mathceil方法然后还原    ()
   }
 
   function max(array) {
@@ -885,14 +898,14 @@ var yyang755 = function () {
     return max
   }
 
-  function maxBy(array, iteratee) {
+  function maxBy(array, predicate) {
     var max = -Infinity
-    var iteratee = iteratee(iteratee)
+    var predicate = iteratee(predicate)
     if (!array.length) {
       return undefined
     }
     for (let i = 0; i < array.length; i++) {
-      if (iteratee(array[i]) > max) max = iteratee(array[i])
+      if (predicate(array[i]) > max) max = predicate(array[i])
     }
     return max
   }
@@ -910,22 +923,26 @@ var yyang755 = function () {
     return min
   }
 
-  function minBy(array, iteratee) {
+  function minBy(array, predicate) {
     var min = Infinity
-    iteratee = iteratee(iteratee)
+    predicate = iteratee(predicate)
     if (!array.length) {
       return undefined
     }
     for (let i = 0; i < array.length; i++) {
-      if (iteratee(array[i]) < min) {
-        min = iteratee(array[i])
+      if (predicate(array[i]) < min) {
+        min = predicate(array[i])
       }
     }
     return min
   }
 
-  function round(round, precision) {
-    return Math.round(number * (10 ** precision)) / 10 ** precision
+  function round(number, precision) {
+    return Math.round(number * (10 ** precision)) / (10 ** precision)
+  }
+
+  function name(params) {
+    
   }
 
   return {
@@ -935,6 +952,7 @@ var yyang755 = function () {
     difference,
     some,
     size,
+    delay,
     shuffle,
     isDate,
     isElement,
@@ -951,6 +969,7 @@ var yyang755 = function () {
     defer,
     toArray,
     isFinite,
+    isObject,
     ceil,
     max,
     maxBy,
