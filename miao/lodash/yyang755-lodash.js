@@ -859,8 +859,8 @@ var yyang755 = function () {
     return typeJudge(value) == "[object Number]"
   }
 
-  function isObject(value) {
-    return typeJudge(value) == "[object Object]"
+  function isObject(val) {
+    return typeJudge(val) == "[object Object]" || typeJudge(val) == "[object Array]" || typeJudge(val) == "[object Function]"
   }
 
   function isRegExp(value) {
@@ -871,7 +871,7 @@ var yyang755 = function () {
     return typeJudge(value) == "[object String]"
   }
 
-  function isUdefined(value) {
+  function isUndefined(value) {//un
     return value === undefined
   }
 
@@ -941,9 +941,19 @@ var yyang755 = function () {
     return Math.round(number * (10 ** precision)) / (10 ** precision)
   }
 
-  function name(params) {
-
+  function isFloat(value) {
+    return isNumber(value) && Math.floor(value) !== value
   }
+
+  function random(min = 0, max = 1, floating) {
+    var tem = Math.random() * (max - min) + min
+    if (floating || isFloat(min) || isFloat(max)) {
+      return tem
+    }
+    return Math.floor(tem)
+  }
+
+
 
   return {
     chunk,
@@ -953,6 +963,7 @@ var yyang755 = function () {
     some,
     size,
     delay,
+    random,
     shuffle,
     isDate,
     isElement,
@@ -961,10 +972,11 @@ var yyang755 = function () {
     isString,
     isRegExp,
     isNumber,
+    isFloat,
     isNull,
     isNaN,
     isNil,
-    isUdefined,
+    isUndefined,
     isFunction,
     defer,
     toArray,
