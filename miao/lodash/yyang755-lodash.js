@@ -678,9 +678,9 @@ var yyang755 = function () {
 
   }
 
-  function map(collection, iteratee) {
+  function map(collection, predicate) {
     var result = []
-    iteratee = iteratee(iteratee)
+    iteratee = iteratee(predicate)
     if (typeJudge(collection) == "[object Array]") {
       for (let i = 0; i < collection.length; i++) {
         result.push(iteratee(collection[i], i, collection))
