@@ -182,7 +182,6 @@ var yyang755 = function () {
 
   function isBoolean(value) {
     return typeJudge(value) == '[object Boolean]'
-
   }
 
   function get(object, path, defaultValues) {
@@ -325,15 +324,17 @@ var yyang755 = function () {
   function pullAllBy(array, values, itee) {//function pullAllBy(array, ...values, itee)扩展运算符只能在末尾
     //错误：Line 323: Rest element must be last element
     itee = iteratee(itee)
+    var result = []
     //let same = itee(values.shift())//取出第一项返回
     for (let i = 0; i < array.length; i++) {
       for (let j = 0; j < values.length; j++) {
         if (itee(array[i]) == itee(values[j])) {
-          array.splice(i, 1)//从i起取出几项返回，但一般要的是array
+          //array.splice(i, 1)//从i起取出几项返回，但一般要的是array
+          result.push(array[i])
         }
       }
     }
-    return array
+    return array.pullAll(array, result)
   }
 
   function pullAllWith(array, values, comparator) {
@@ -685,7 +686,7 @@ var yyang755 = function () {
         result.push(iteratee(collection[i], i, collection))
       }
     }
-    if (typeJudge(collection) == "[object Object]") {
+    if (typeof collection == 'object') {
       for (var key in collection) {//in
         result.push(iteratee(collection[key], key, collection))
       }
@@ -946,6 +947,19 @@ var yyang755 = function () {
   }
 
   function random(min = 0, max = 1, floating) {
+    if (max == undefined) {//只有min时
+      max = min
+      min = 0
+    }
+    // if (max >= 0 && max <= 1 || max == undefined && min >= 0 && min <= 1) {
+    //   return tem
+    // }
+
+    //   else if (typeof max == "boolean") {
+    //     floating = max
+    //     max = min
+    //     min = 0
+    // }
     var tem = Math.random() * (max - min) + min
     if (floating || isFloat(min) || isFloat(max)) {
       return tem
@@ -953,7 +967,15 @@ var yyang755 = function () {
     return Math.floor(tem)
   }
 
-
+  function split(string, separator, limit) {
+    var result = []
+    for (let i = 0; i < string.length; i++) {
+      if (string[i] !== separator) {
+        result.push(string[i])
+      }
+    }
+    return result.slice(0, limit)
+  }
 
   return {
     chunk,
@@ -982,6 +1004,7 @@ var yyang755 = function () {
     toArray,
     isFinite,
     isObject,
+    split,
     ceil,
     max,
     maxBy,
