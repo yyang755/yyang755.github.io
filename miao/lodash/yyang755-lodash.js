@@ -517,7 +517,7 @@ var yyang755 = function () {
   }
   //创建一个针对断言函数func结果取反的函数。func断言函数被调用的时候，this绑定到创建的函数，并传入对应参数。
   function negate(predicate) {
-    return function (...values) {
+    return function (...values) {//return后面是一个函数，很好理解，大多是接一个函数，然后返回一个函数
       return !predicate(...values);
     };
   }
@@ -777,7 +777,7 @@ var yyang755 = function () {
   }
 
   function some(collection, predicate) {
-    predicate = iteratee(predicate)//
+    predicate = iteratee(predicate)  //
     for (let i = 0; i < collection.length; i++) {
       if (predicate(collection[i]) == true) {
         return true
@@ -1209,7 +1209,7 @@ var yyang755 = function () {
         if (x == "&#39")
           return "'"
       })
-    
+
     //   return string.replace(
     //     /(&amp;)|(&lt;)|(&gt;)|(&quot;)|(&#39;)|(&#96;)/g,
     //     (match) => {
@@ -1233,7 +1233,79 @@ var yyang755 = function () {
     // )
   }
 
-  
+  // arguments 是一个对应于传递给函数的参数的类数组对象。
+  function range(start = 0, end, step = 1) {
+    if (arguments == 0) return []//传进去的是0
+    if (arguments.length == 1) [start, end] = [0, start]//只传一个值,按题意来写
+    if (step == undefined && end < 0) step = -1
+    var result = []
+    if (step == 0) {
+      for (let i = start; i < end; i++) {
+        result.push(start)
+      }
+    }
+    if (start < end) {
+      for (let i = start; i > end; i += step) {
+        result.push(i)
+      }
+    } else {
+      for (let i = start; i < end; i += step) {
+        result.push(i)
+      }
+    }
+    return result
+  }
+
+  function rangeRight(...args) {
+    return range(...args).reverse()
+  }
+
+  function times(n, iteratee) {
+    var result = []
+    for (let i = 0; i < n; i++) {
+      result.push(iteratee(i))
+    }
+    return result
+  }
+
+  function uniqueId(prefix = '') {
+    return prefix + Date.now()
+  }
+
+  // var object = { 'user': 'fred' };
+  // var getter = _.constant(object);
+
+  // getter() === object;
+  // // => true
+  function constant(value) {
+    return function () {
+      return value
+    }
+  }
+  //创建一个最多接受 N 个参数，忽略多余参数的方法。
+  function ary(func, n = func.length) {
+    return function (...args) {
+      return func(...args.slice(0, n))
+    }
+  }
+
+  function ary(func, n = func.length) {
+    return function (...args) {
+      return func(...args.slice(0))
+    }
+  }
+
+  function once(func) {
+    var flag = true
+    var result = null
+    return function (...args) {
+      if (flag == true) {
+        result = func(...args)
+        flag = false
+      }
+      return result
+    }
+  }
 
   return {
     chunk,
@@ -1241,6 +1313,12 @@ var yyang755 = function () {
     concat,
     difference,
     reject,
+    range,
+    rangeRight,
+    parseInt,
+    repeat,
+    escape,
+    unescape,
     keys,
     keysIn,
     assign,
@@ -1250,6 +1328,15 @@ var yyang755 = function () {
     sumBy,
     substract,
     some,
+    once,
+    ary,
+    constant,
+    uniqueId,
+    times,
+    at,
+    pad,
+    padEnd,
+    padStart,
     size,
     delay,
     random,
