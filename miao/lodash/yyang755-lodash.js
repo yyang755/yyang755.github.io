@@ -334,9 +334,9 @@ var yyang755 = function () {
         }
       }
     }
-    return array.pullAll(array, result)
+    return pullAll(array, result)//array.
   }
-
+  pullAll
   function pullAllWith(array, values, comparator) {
     for (var i = 0; i < values.length; i++) {
       for (var j = 0; j < array.length; j++) {
@@ -547,7 +547,8 @@ var yyang755 = function () {
     for (let i = 0; i < array.length; i++) {
       if (array.lastIndexOf(array[i] != i)) {
         array = pull(array, array[i])//
-        i = 0
+        //i = 0
+        i--
       }
     }
     return array
@@ -778,7 +779,7 @@ var yyang755 = function () {
   function some(collection, predicate) {
     predicate = iteratee(predicate)//
     for (let i = 0; i < collection.length; i++) {
-      if (predicate(collection[i])) {
+      if (predicate(collection[i]) == true) {
         return true
       }
     }
@@ -884,7 +885,7 @@ var yyang755 = function () {
     return result
   }
 
-  function ceil(number, precision) {
+  function ceil(number, precision = 0) {
     return Math.ceil(number * (10 ** precision)) / (10 ** precision)// 先化为只有一位小数的数，以利用mathceil方法然后还原    ()
   }
 
@@ -938,7 +939,7 @@ var yyang755 = function () {
     return min
   }
 
-  function round(number, precision) {
+  function round(number, precision = 0) {
     return Math.round(number * (10 ** precision)) / (10 ** precision)
   }
 
@@ -977,11 +978,277 @@ var yyang755 = function () {
     return result.slice(0, limit)
   }
 
+  function reject(collection, predicate) {
+    var result = []
+    for (let i = 0; i < collection.length; i++) {
+      if (predicate(collection[i] == false)) {
+        result.push(collection[i])
+      }
+    }
+    return result
+    //return collection.filter(it => !predicate(it))
+  }
+
+  function isEqual(value, other) {
+    if (value === other) return true
+    if (value !== value && other !== other) return true
+    if (value === null) {
+      return other === null
+    }
+    var a = typeof value
+    var b = typeof other
+    if (a === b) {
+      if (a == 'object') {
+        var c = Object.keys(value).length
+        var d = Object.keys(other).length
+        if (c === d) {
+          for (var key in a) {
+            if (a[key] !== b[key]) {
+              return false
+            }
+          }
+          return true
+        }
+      }
+      return false
+    }
+  }
+
+  // 返回一个 function 对象自身可枚举属性名的数组。
+  function functions(object) {
+    var result = []
+    var keys = Object.keys(object)//提出属性名
+    for (var key in keys) {//遍历属性名
+      if (isFunction(object(key))) {
+        result.push(key)
+      }
+    }
+    return key
+  }
+
+  function keys(object) {
+    var result = []
+    for (var key in object) {
+      if (object.hasOwnProperty(key)) {//
+        result.push(key)
+      }
+    }
+    return result
+  }
+
+  function keysIn() {
+    var result = []
+    for (var key in object) {
+      result.push(key)
+    }
+    return result
+  }
+  // 反向版 _.mapValues。 这个方法创建一个对象，对象的值与源对象相同，但 key 是通过 iteratee 产生的。
+  function mapKeys(object, itee) {
+    var result = {}
+    itee = iteratee(itee)//
+    var keys = Object.keys(object)
+    for (var key of keys) {
+      result[itee(object[key], key, object)] = object(key)
+    }
+    return result
+  }
+  // 创建一个对象，对象的key相同，值是通过 iteratee 产生的。 iteratee 会传入3个参数： (value, key, object)
+  function mapValues(object, itee) {
+    var result = {}
+    itee = iteratee(itee)
+    var keys = Object.keys(object)//函数Object
+    for (var key of keys) {
+      result[key] = itee(object[key], key, object)
+    }
+    return result
+  }
+
+  function substract(minuend, substrahend) {
+    return minuend - substract
+  }
+
+  function sum(array) {
+    var sum = 0
+    //for (let val of arr)
+    for (let i = 0; i < array.length; i++) {
+      sum += array[i]
+    }
+    return sum
+    // return array.reduce(function(sum, it) {
+    //   return sum + it
+    // }, 0)
+    // return array.reduce((sum,it) => sum + it, 0)
+  }
+
+  function sumBy(array, itee) {
+    itee = iteratee(itee)
+    return array.reduce((sum, it) => sum + itee(it), 0)
+  }
+
+  function clamp(number, min, max) {
+    if (min > max) {
+      return min
+    }
+    if (min < max) {
+      return max
+    }
+    if (min = max) {
+      return number
+    }
+  }
+  // 分配来源对象的可枚举属性到目标对象上。
+  function assign(object, ...source) {
+    source.forEach(it => {
+      for (let key of Object.keys(it)) {
+        object[key] = it[key]
+      }
+    })
+    return object
+  }
+
+  function assignIn(object, ...source) {
+    for (let key of source) {
+      for (let i in key) {
+        object[i] = source[i]
+      }
+    }
+    return object
+  }
+  //get //match
+  function at(object, paths) {
+    var result = []
+    if (isString(paths)) {
+      return result.push(get(object, paths))
+    } else {
+      paths.forEach(path => {
+        result.push(get(object, path))
+      })
+    }
+    return result
+  }
+
+  function escape(string) {
+    return string.replace(/[\&\<\>\'\"]/g, x => {
+      if (x == '&') {
+        return '&amp;'
+      }
+      if (x == '<') {
+        return '&lt;'
+      }
+      if (x == '>') {
+        return '&gt;'
+      }
+      if (x == "'") {//'用""  "相反
+        return '&#39;'
+      }
+      if (x == '"') {
+        return '&quot;'
+      }
+    })
+  }
+
+  function pad(string = '', length = 0, chars = ' ') {
+    if (length <= string.length) {
+      return string
+    }
+    var left = Math.floor(Math.ceil((length - string.length) / chars.length) / 2)
+    for (let i = 0; i < left; i++) {
+      string = chars + string
+    }
+    while (string.length < length) {
+      string = string + chars
+    }
+    return string.slice(0, length)
+  }
+
+  function padStart(string = '', length = 0, chars = ' ') {
+    var temp = string
+    if (length <= string.length) {
+      return string
+    }
+    while (string.length < length) {
+      string = chars + string//
+    }
+    return string.slice(0, length - temp.length) + temp
+  }
+
+  function padEnd(string = '', length = 0, chars = ' ') {
+    if (length <= string) {
+      return string
+    }
+    while (string.length < length) {
+      string += chars
+    }
+    return string.slice(0, length)
+  }
+
+  function parseInt(string, radix = 10) {
+    return Number.parseInt(string, radix)
+  }
+
+  function repeat(string, n) {
+    var result = ''
+    for (let i = 0; i < n; i++) {
+      result += string
+    }
+    return result
+  }
+
+  function unescape(string) {
+    return str.replace(/&amp;|&lt;| &gt;|&quot;|&#39/g,
+      x => {
+        if (x == "&amp;")
+          return "&";
+        if (x == "&lt;")
+          return "<";
+        if (x == "&gt;")
+          return ">";
+        if (x == "&quot;")
+          return '"'
+        if (x == "&#39")
+          return "'"
+      })
+    
+    //   return string.replace(
+    //     /(&amp;)|(&lt;)|(&gt;)|(&quot;)|(&#39;)|(&#96;)/g,
+    //     (match) => {
+    //         switch (match) {
+    //             case "&amp;":
+    //                 return "&"
+    //             case "&lt;":
+    //                 return "<"
+    //             case "&gt;":
+    //                 return ">"
+    //             case "&quot;":
+    //                 return '"'
+    //             case "&#39;":
+    //                 return "'"
+    //             case "&#96;":
+    //                 return "`"
+    //             default:
+    //                 return match
+    //         }
+    //     }
+    // )
+  }
+
+  
+
   return {
     chunk,
     compact,
     concat,
     difference,
+    reject,
+    keys,
+    keysIn,
+    assign,
+    assignIn,
+    clamp,
+    sum,
+    sumBy,
+    substract,
     some,
     size,
     delay,
