@@ -1307,6 +1307,73 @@ var yyang755 = function () {
     }
   }
 
+  // 创建 object 自身可枚举属性的值为数组
+  // function Foo() {
+  //   this.a = 1;
+  //   this.b = 2;
+  // }
+  
+  // Foo.prototype.c = 3;
+  
+  // _.values(new Foo);
+  // // => [1, 2] (无法保证遍历的顺序)
+  
+  // _.values('hi');
+  // // => ['h', 'i']
+  function values(object) {
+    var result = [] 
+    var keys = Object.keys(object)
+    for (var key of keys) {
+      result.push(object[key])//object(key)
+    }
+    return result
+
+    // for (var key in object) {
+    //   if (object.hasOwnProperty(key)) {
+    //     result.push(object[key])
+    //   }
+    // }
+    // return result
+
+  }
+  // 创建 object 自身和继承的可枚举属性的值为数组
+  // function Foo() {
+  //   this.a = 1;
+  //   this.b = 2;
+  // }
+  
+  // Foo.prototype.c = 3;
+  
+  // _.valuesIn(new Foo);
+  // => [1, 2, 3] (无法保证遍历的顺序)
+  function valueIn(object) {
+    var result = []
+    for (var key in object) {
+      result.push(object[key])
+    }
+    return result
+  } 
+
+  function toPairs(object) {
+    var res = []
+    for (var key in object) {
+      if (object.hasOwnProperty(key)) {
+        //res[i].push(key)
+        //res[i].push(object[key])
+        res.push([key, object[key]])
+      }
+    }
+    return res
+  }
+
+  function toPairsIn() {
+    var res = [] 
+    for (var key in object) {
+      res.push([key, object([key])])
+    }
+    return res
+  }
+
   return {
     chunk,
     compact,
@@ -1321,6 +1388,8 @@ var yyang755 = function () {
     unescape,
     keys,
     keysIn,
+    toPairs,
+    toPairsIn,
     assign,
     assignIn,
     clamp,
@@ -1330,6 +1399,8 @@ var yyang755 = function () {
     some,
     once,
     ary,
+    value,
+    valueIn,
     constant,
     uniqueId,
     times,
